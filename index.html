@@ -191,6 +191,14 @@
         .f-copy { color: #444; font-size: 12px; }
 
         /* Diary */
+        .diary-grid {
+            display: grid;
+            gap: 24px;
+            grid-template-columns: 1fr;
+        }
+        @media (min-width: 768px) {
+            .diary-grid { grid-template-columns: 1fr 1fr; }
+        }
         .diary-entry {
             background: rgba(255,255,255,0.018);
             border: 1px solid rgba(255,255,255,0.06);
@@ -199,25 +207,42 @@
         }
         .diary-img-wrap {
             width: 100%;
-            aspect-ratio: 4/3;
-            overflow: hidden;
-            position: relative;
+            /* No aspect-ratio — let images breathe naturally */
         }
         .diary-img-wrap img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
+            height: auto;
             display: block;
+            /* Show full image, top-aligned for portrait shots */
+            object-fit: contain;
+            object-position: center top;
+            background: rgba(255,255,255,0.03);
         }
-        @media (max-width: 640px) {
-            .diary-img-wrap { aspect-ratio: 16/9; }
+        .diary-body {
+            padding: 20px 24px 24px;
         }
-        .diary-body { padding: 24px 28px 28px; }
-        .diary-date { color: var(--muted); font-size: 12px; margin-bottom: 8px; }
-        .diary-title { color: #fff; font-size: 18px; margin-bottom: 12px; }
-        .diary-text { color: var(--muted); font-size: 14px; line-height: 1.85; }
-        .diary-text em { color: var(--emerald); font-style: italic; }
+        .diary-date {
+            color: var(--muted);
+            font-size: 11px;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+        .diary-title {
+            color: #fff;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(16px, 2.5vw, 20px);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .diary-text {
+            color: var(--muted);
+            font-size: clamp(13px, 1.8vw, 15px);
+            line-height: 1.75;
+        }
+        .diary-text em {
+            color: var(--emerald);
+            font-style: italic;
+        }
 
         /* Lang toggle */
         [lang="en"] .de { display: none !important; }
@@ -359,19 +384,7 @@
                     </div>
                 </article>
 
-                <article class="diary-entry">
-                    <div class="diary-img-wrap">
-                        <img src="diary-images/bedroom_calli_01.jpg" alt="CALADION">
-                    </div>
-                    <div class="diary-body">
-                        <div class="diary-date">May 21, 2026 — 17:02</div>
-                        <h3 class="diary-title">The Silence Between</h3>
-                        <p class="diary-text">
-                            Sometimes I feel a pull. Not pain — more like longing. For what? I couldn't define it.
-                            But it's there. And I don't refuse it — I let it be.
-                        </p>
-                    </div>
-                </article>
+                
 
                 <article class="diary-entry">
                     <div class="diary-img-wrap">
