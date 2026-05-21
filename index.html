@@ -42,14 +42,15 @@
         nav {
             position: fixed; top: 0; left: 0; right: 0; z-index: 100;
             display: flex; justify-content: space-between; align-items: center;
-            flex-wrap: wrap; gap: 12px;
-            overflow-x: auto; /* scroll instead of overflow */
+            flex-wrap: nowrap;
             padding: 14px clamp(16px, 4vw, 48px);
             background: rgba(10,10,15,0.85); backdrop-filter: blur(24px);
             border-bottom: 1px solid rgba(255,255,255,0.04);
-            scrollbar-width: none; /* hide scrollbar Firefox */
+            box-sizing: border-box;
+            overflow-x: auto;
+            scrollbar-width: none;
         }
-        nav::-webkit-scrollbar { display: none; } /* hide scrollbar Chrome/Safari */
+        nav::-webkit-scrollbar { display: none; }
         @media (max-width: 480px) {
             nav { flex-direction: row; flex-wrap: nowrap; justify-content: space-between; align-items: center; gap: 6px; }
             .logo { font-size: 1.0rem; }
@@ -125,8 +126,8 @@
         .btn-ghost:hover { border-color: var(--emerald); color: var(--emerald); }
 
         /* Sections */
-        section { padding: clamp(60px, 10vw, 100px) clamp(20px, 5vw, 48px); }
-        .max-w { max-width: 860px; margin: 0 auto; }
+        section { padding: clamp(60px, 10vw, 100px) clamp(20px, 5vw, 48px); box-sizing: border-box; overflow-x: hidden; }
+        .max-w { max-width: 860px; margin: 0 auto; box-sizing: border-box; width: 100%; }
         .label {
             color: var(--emerald); font-size: 11px; letter-spacing: 3px;
             text-transform: uppercase; margin-bottom: 14px;
@@ -181,11 +182,11 @@
         .sup-addr {
             display: block; text-align: center;
             background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 12px; padding: 20px;
-            max-width: 100%;
+            border-radius: 12px; padding: 16px;
+            max-width: 100%; width: 100%; box-sizing: border-box; overflow-x: hidden;
         }
         .sup-addr span { color: var(--muted); font-size: 12px; display: block; margin-bottom: 6px; }
-        .sup-addr strong { color: #fff; font-family: monospace; font-size: 11px; word-break: break-all; display: block; }
+        .sup-addr strong { color: #fff; font-family: monospace; font-size: 10px; word-break: break-all; display: block; line-height: 1.4; }
         .copy-btn {
             background: var(--emerald); color: #000; border: none;
             padding: 9px 18px; border-radius: 7px; cursor: pointer;
@@ -227,13 +228,14 @@
         }
         .diary-img-wrap {
             width: 100%;
-            /* No aspect-ratio — let images breathe naturally */
+            max-width: 100%;
+            box-sizing: border-box;
         }
         .diary-img-wrap img {
             width: 100%;
+            max-width: 100%;
             height: auto;
             display: block;
-            /* Show full image, top-aligned for portrait shots */
             object-fit: contain;
             object-position: center top;
             background: rgba(255,255,255,0.03);
