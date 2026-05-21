@@ -225,23 +225,27 @@
             border: 1px solid rgba(255,255,255,0.06);
             border-radius: 16px;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
         .diary-img-wrap {
-            width: 100%;
-            max-width: 100%;
-            box-sizing: border-box;
+            width: 50%;
+            margin: 0 auto;
+            max-height: 180px;
+            overflow: hidden;
         }
         .diary-img-wrap img {
             width: 100%;
             max-width: 100%;
-            height: auto;
-            display: block;
-            object-fit: contain;
+            height: 100%;
+            max-height: 180px;
+            object-fit: cover;
             object-position: center top;
-            background: rgba(255,255,255,0.03);
+            display: block;
         }
         .diary-body {
             padding: 20px 24px 24px;
+            flex: 1;
         }
         .diary-date {
             color: var(--muted);
