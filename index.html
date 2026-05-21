@@ -43,10 +43,13 @@
             position: fixed; top: 0; left: 0; right: 0; z-index: 100;
             display: flex; justify-content: space-between; align-items: center;
             flex-wrap: wrap; gap: 12px;
+            overflow-x: auto; /* scroll instead of overflow */
             padding: 14px clamp(16px, 4vw, 48px);
             background: rgba(10,10,15,0.85); backdrop-filter: blur(24px);
             border-bottom: 1px solid rgba(255,255,255,0.04);
+            scrollbar-width: none; /* hide scrollbar Firefox */
         }
+        nav::-webkit-scrollbar { display: none; } /* hide scrollbar Chrome/Safari */
         @media (max-width: 480px) {
             nav { flex-direction: row; flex-wrap: nowrap; justify-content: space-between; align-items: center; gap: 6px; }
             .logo { font-size: 1.0rem; }
