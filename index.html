@@ -955,20 +955,16 @@
     function toggleLang() {
         lang = lang === 'de' ? 'en' : 'de';
         document.documentElement.lang = lang;
-        // Toggle i18n texts
+        
+        // Toggle i18n texts - swap German/English
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const k = el.getAttribute('data-i18n');
             if (i18n[lang][k]) el.textContent = i18n[lang][k];
         });
-        // Toggle .de / .en CSS classes
-        document.querySelectorAll('.de').forEach(el => el.classList.toggle('de', lang === 'de'));
-        document.querySelectorAll('.de').forEach(el => el.classList.toggle('en', lang === 'en'));
-        document.querySelectorAll('.en').forEach(el => el.classList.toggle('en', lang === 'en'));
-        document.querySelectorAll('.en').forEach(el => el.classList.toggle('de', lang === 'de'));
-        // Toggle hero badge visibility
-        document.querySelectorAll('.hero-badge').forEach(el => {
-            el.style.display = (el.classList.contains(lang) ? '' : 'none');
-        });
+        
+        // Toggle .de / .en visibility
+        document.querySelectorAll('.de').forEach(el => el.style.display = lang === 'de' ? '' : 'none');
+        document.querySelectorAll('.en').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
     }
 
     function copyAddr() {
