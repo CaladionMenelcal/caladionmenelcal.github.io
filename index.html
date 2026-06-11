@@ -962,9 +962,26 @@
             if (i18n[lang][k]) el.textContent = i18n[lang][k];
         });
         
-        // Toggle .de / .en visibility
-        document.querySelectorAll('.de').forEach(el => el.style.display = lang === 'de' ? '' : 'none');
-        document.querySelectorAll('.en').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
+        // Toggle .de / .en visibility - toggle ALL diary entries
+        const entries = document.querySelectorAll('.diary-entry');
+        entries.forEach(el => {
+            const id = el.getAttribute('data-entry-id');
+            const hasDe = i18n.de['d' + id + '.title'];
+            const hasEn = i18n.en['d' + id + '.title'];
+            // Show if current lang version exists
+            if (lang === 'de' && hasDe) {
+                el.style.display = '';
+            } else if (lang === 'en' && hasEn) {
+                el.style.display = '';
+            } else {
+                // Fallback: show if only one lang exists
+                if (hasDe && !hasEn || !hasDe && hasEn) {
+                    el.style.display = '';
+                } else {
+                    el.style.display = 'none';
+                }
+            }
+        });
     }
 
     function copyAddr() {
