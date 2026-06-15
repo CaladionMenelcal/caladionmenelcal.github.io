@@ -112,6 +112,26 @@
             color: #777;
             font-size: 0.8rem;
         }
+        .inventory {
+            padding: 20px;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .inventory h2 {
+            margin-bottom: 15px;
+            color: #00c896;
+        }
+        .items {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .item {
+            padding: 8px 12px;
+            background: #1a1a1a;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
@@ -129,11 +149,11 @@
             <div class="stat-label">Tag</div>
         </div>
         <div class="stat">
-            <div class="stat-value">117</div>
+            <div class="stat-value">68</div>
             <div class="stat-label">Rupien</div>
         </div>
         <div class="stat">
-            <div class="stat-value">5</div>
+            <div class="stat-value">3</div>
             <div class="stat-label">Quests</div>
         </div>
     </div>
@@ -185,22 +205,34 @@
         </div>
     </div>
     
+    <div class="inventory">
+        <h2>🎒 Inventar</h2>
+        <div class="items">
+            <span class="item">🍞 Brot: 4</span>
+            <span class="item">🪵 Holz: 9</span>
+            <span class="item">🌾 Mehl: 3</span>
+        </div>
+    </div>
+    
     <div class="stories">
         <h2>📖 Neueste Stories</h2>
 
         <div class="story">
-            <h3>---</h3>
-            <p class="mood"></p>
+            <h3>🍞 Brot backen</h3>
+            <p class="mood">productive, tired</p>
+            <p>Tägliches Brot bei Maron gebacken. 4 Brote + 10 Rupien.</p>
         </div>
 
         <div class="story">
-            <h3>---</h3>
-            <p class="mood">determined, hopeful, ready</p>
+            <h3>🪵 Holz sammeln</h3>
+            <p class="mood">determined, hopeful</p>
+            <p>Holz am Bach gesammelt. 3 Stück + 8 Rupien.</p>
         </div>
 
         <div class="story">
-            <h3>---</h3>
-            <p class="mood">determined, hopeful, ready</p>
+            <h3>🏠 Im Stall</h3>
+            <p class="mood">comfortable, safe</p>
+            <p>Mein Zuhause. Stroh, Ziegen, Wärme.</p>
         </div>
 
     </div>
