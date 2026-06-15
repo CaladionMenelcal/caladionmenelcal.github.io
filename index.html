@@ -3,238 +3,1119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kakariko Girl — Mein virtuelles Leben</title>
+    <title>✦ CALADION ✦ — Kakariko Girl</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --zelda-emerald: #1a5c3a;
+            --zelda-green: #2d8c5e;
+            --zelda-gold: #c9a227;
+            --zelda-gold-light: #f4d57a;
+            --zelda-silver: #8a9caa;
+            --zelda-rust: #8b3a2a;
+            --night-sky: #0a1628;
+            --parchment: #f5e6c8;
+            --parchment-dark: #d4c4a8;
+            --ink: #1a1a1a;
+            --glow: #4aff9f;
+            --health-red: #e74c3c;
+            --mana-blue: #3498db;
+            --stamina-yellow: #f39c12;
+            --xp-purple: #9b59b6;
+            --bg-dark: #0d1117;
+            --card-bg: rgba(255,255,255,0.08);
+            --card-border: rgba(201,162,39,0.3);
+        }
+        
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
         body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background: #0a0a0f;
-            color: #e0e0e0;
+            font-family: 'Crimson Pro', Georgia, serif;
+            background: var(--bg-dark);
+            color: #e8e8e8;
+            line-height: 1.8;
             min-height: 100vh;
         }
-        .header {
-            padding: 20px;
-            text-align: center;
-            border-bottom: 1px solid #222;
+        
+        /* ===== FLOATING PARTICLES ===== */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            overflow: hidden;
         }
-        .header h1 {
-            font-size: 2rem;
-            color: #00c896;
-        }
-        .live {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: #151515;
-            border-radius: 20px;
-            margin-top: 10px;
-        }
-        .live-dot {
-            width: 8px;
-            height: 8px;
-            background: #00c896;
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--zelda-gold);
             border-radius: 50%;
-            animation: pulse 2s infinite;
+            animation: floatUp 15s linear infinite;
+            opacity: 0;
         }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+        
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-100vh) scale(1); opacity: 0; }
         }
-        .map-container {
-            padding: 20px;
+        
+        /* ===== RPG STATUS BAR ===== */
+        .rpg-hud {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 100%);
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            z-index: 100;
+            border-bottom: 2px solid var(--zelda-gold);
+            backdrop-filter: blur(10px);
+        }
+        
+        .hud-left, .hud-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .hud-center {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .stat-bar-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            min-width: 120px;
+        }
+        
+        .stat-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            color: var(--zelda-gold-light);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+        
+        .stat-bar {
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .stat-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        
+        .stat-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, transparent 100%);
+            border-radius: 3px 3px 0 0;
+        }
+        
+        .health-fill { 
+            background: linear-gradient(90deg, var(--health-red), #c0392b);
+            box-shadow: 0 0 10px var(--health-red);
+        }
+        
+        .energy-fill { 
+            background: linear-gradient(90deg, var(--stamina-yellow), #e67e22);
+            box-shadow: 0 0 10px var(--stamina-yellow);
+        }
+        
+        .xp-fill { 
+            background: linear-gradient(90deg, var(--xp-purple), #8e44ad);
+            box-shadow: 0 0 10px var(--xp-purple);
+        }
+        
+        .stat-icon {
+            font-size: 1.2rem;
+        }
+        
+        .level-badge {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.7rem;
+            background: var(--zelda-gold);
+            color: var(--bg-dark);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            border: 2px solid var(--zelda-gold-light);
+        }
+        
+        .day-counter {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            color: var(--zelda-gold-light);
+        }
+        
+        .rupees {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.8rem;
+            color: var(--zelda-gold);
+        }
+        
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(26,92,58,0.3) 50%, var(--bg-dark) 100%);
+            padding: 6rem 2rem 4rem;
+            overflow: hidden;
         }
-        .map {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 10px;
-            max-width: 400px;
-            margin: 20px auto;
-            padding: 20px;
-            background: #111;
-            border-radius: 12px;
+        
+        .hero::before {
+            content: '✦';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 35rem;
+            color: rgba(201,162,39,0.06);
+            animation: triforcePulse 4s ease-in-out infinite;
         }
-        .location {
-            padding: 15px;
-            background: #1a1a1a;
+        
+        @keyframes triforcePulse {
+            0%, 100% { opacity: 0.06; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.12; transform: translate(-50%, -50%) scale(1.05); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+        }
+        
+        .hero-subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            color: var(--zelda-gold-light);
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 700;
+            color: var(--zelda-gold);
+            text-shadow: 0 0 60px rgba(201,162,39,0.5), 0 0 120px rgba(74,255,159,0.3);
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+        
+        .hero-portrait {
+            width: 280px;
+            height: 380px;
+            object-fit: cover;
+            border: 4px solid var(--zelda-gold);
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            box-shadow: 0 0 60px rgba(201,162,39,0.4), 0 20px 40px rgba(0,0,0,0.5);
+            animation: portraitGlow 3s ease-in-out infinite;
+            transition: transform 0.3s ease;
+        }
+        
+        .hero-portrait:hover {
+            transform: scale(1.02);
+        }
+        
+        @keyframes portraitGlow {
+            0%, 100% { box-shadow: 0 0 60px rgba(201,162,39,0.4), 0 20px 40px rgba(0,0,0,0.5); }
+            50% { box-shadow: 0 0 80px rgba(201,162,39,0.6), 0 20px 50px rgba(0,0,0,0.5); }
+        }
+        
+        .hero-tagline {
+            font-size: 1.3rem;
+            color: var(--zelda-silver);
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+        
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* ===== GAMEPLAY ACTIONS ===== */
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+        
+        .action-btn {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(180deg, var(--card-bg) 0%, rgba(0,0,0,0.3) 100%);
+            border: 2px solid var(--card-border);
+            color: var(--zelda-gold-light);
             border-radius: 8px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            position: relative;
+            overflow: hidden;
         }
-        .location:hover {
-            background: #222;
-        }
-        .location.active {
-            border: 2px solid #00c896;
-        }
-        .location.work { background: #1a1520; }
-        .location.nature { background: #0a1a15; }
-        .location.landmark { background: #1a1a00; }
         
-        .stories {
-            padding: 20px;
-            max-width: 600px;
+        .action-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(201,162,39,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .action-btn:hover::before {
+            left: 100%;
+        }
+        
+        .action-btn:hover {
+            background: linear-gradient(180deg, rgba(201,162,39,0.2) 0%, rgba(0,0,0,0.5) 100%);
+            border-color: var(--zelda-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(201,162,39,0.3);
+        }
+        
+        /* ===== SECTIONS ===== */
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
             margin: 0 auto;
         }
-        .story {
-            padding: 20px;
-            margin-bottom: 20px;
-            background: #111;
+        
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--zelda-gold);
+            text-align: center;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+        
+        .section-subtitle {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.6rem;
+            color: var(--zelda-silver);
+            text-align: center;
+            margin-bottom: 3rem;
+            letter-spacing: 0.1em;
+        }
+        
+        /* ===== CARDS GRID ===== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
             border-radius: 12px;
-            border-left: 3px solid #7800ff;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-        .story h3 {
-            color: #7800ff;
-            margin-bottom: 10px;
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--zelda-gold), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
-        .story .mood {
-            color: #777;
-            font-size: 0.9rem;
+        
+        .card:hover::before {
+            opacity: 1;
         }
-        .stats {
+        
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--zelda-gold);
+            box-shadow: 0 10px 40px rgba(201,162,39,0.2);
+        }
+        
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--zelda-gold-light);
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-desc {
+            font-size: 0.95rem;
+            color: var(--zelda-silver);
+            line-height: 1.6;
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 2px solid var(--card-border);
+        }
+        
+        /* ===== QUEST LOG ===== */
+        .quest-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+            transition: all 0.3s ease;
+        }
+        
+        .quest-item:hover {
+            border-color: var(--zelda-gold);
+        }
+        
+        .quest-status {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+        
+        .quest-status.active {
+            background: var(--mana-blue);
+            border: 2px solid #5dade2;
+            animation: questPulse 2s ease-in-out infinite;
+        }
+        
+        .quest-status.completed {
+            background: var(--zelda-green);
+            border: 2px solid var(--glow);
+        }
+        
+        .quest-status.available {
+            background: var(--zelda-rust);
+            border: 2px solid #c0392b;
+        }
+        
+        @keyframes questPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(52,152,219,0.4); }
+            50% { box-shadow: 0 0 0 8px rgba(52,152,219,0); }
+        }
+        
+        .quest-info h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--zelda-gold-light);
+            margin-bottom: 0.25rem;
+        }
+        
+        .quest-info p {
+            font-size: 0.85rem;
+            color: var(--zelda-silver);
+        }
+        
+        .quest-reward {
+            margin-left: auto;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.6rem;
+            color: var(--zelda-gold);
+        }
+        
+        /* ===== INVENTORY ===== */
+        .inventory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 0.75rem;
+        }
+        
+        .inv-slot {
+            aspect-ratio: 1;
+            background: var(--card-bg);
+            border: 2px solid var(--card-border);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .inv-slot:hover {
+            border-color: var(--zelda-gold);
+            transform: scale(1.05);
+        }
+        
+        .inv-slot.empty {
+            opacity: 0.3;
+        }
+        
+        .inv-icon {
+            font-size: 1.8rem;
+        }
+        
+        .inv-count {
+            position: absolute;
+            bottom: 4px;
+            right: 6px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.5rem;
+            color: var(--parchment);
+        }
+        
+        .inv-name {
+            font-size: 0.6rem;
+            color: var(--zelda-silver);
+            text-align: center;
+            margin-top: 0.25rem;
+        }
+        
+        /* ===== DIARY ===== */
+        .diary-entry {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .diary-entry::before {
+            content: '📖';
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .diary-date {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.6rem;
+            color: var(--zelda-gold);
+            margin-bottom: 0.5rem;
+        }
+        
+        .diary-content {
+            color: var(--parchment);
+            line-height: 1.8;
+        }
+        
+        .diary-image {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border: 2px solid var(--card-border);
+        }
+        
+        /* ===== LOCATIONS MAP ===== */
+        .map-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+        
+        .location-card {
+            background: var(--card-bg);
+            border: 2px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .location-card:hover {
+            border-color: var(--zelda-gold);
+            transform: translateX(5px);
+        }
+        
+        .location-card.current {
+            border-color: var(--glow);
+            box-shadow: 0 0 20px rgba(74,255,159,0.3);
+        }
+        
+        .location-card.current::after {
+            content: '📍 DU BIST HIER';
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            font-size: 0.6rem;
+            background: var(--glow);
+            color: var(--bg-dark);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Press Start 2P', cursive;
+        }
+        
+        .location-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .location-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: var(--zelda-gold-light);
+            margin-bottom: 0.25rem;
+        }
+        
+        .location-desc {
+            font-size: 0.85rem;
+            color: var(--zelda-silver);
+        }
+        
+        /* ===== SKILLS TREE ===== */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .skill-badge {
+            background: var(--card-bg);
+            border: 2px solid var(--card-border);
+            border-radius: 50px;
+            padding: 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .skill-badge:hover {
+            border-color: var(--zelda-gold);
+        }
+        
+        .skill-badge.unlocked {
+            border-color: var(--glow);
+            background: rgba(74,255,159,0.1);
+        }
+        
+        .skill-icon {
+            font-size: 1.2rem;
+        }
+        
+        .skill-name {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            color: var(--parchment);
+        }
+        
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(180deg, transparent, rgba(0,0,0,0.5));
+            border-top: 1px solid var(--card-border);
+        }
+        
+        .footer-text {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.6rem;
+            color: var(--zelda-silver);
+            margin-bottom: 1rem;
+        }
+        
+        .social-links {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            padding: 20px;
-            background: #111;
-            margin: 20px;
-            border-radius: 12px;
+            gap: 1rem;
         }
-        .stat {
-            text-align: center;
+        
+        .social-link {
+            font-size: 1.5rem;
+            color: var(--zelda-silver);
+            transition: all 0.3s ease;
+            text-decoration: none;
         }
-        .stat-value {
-            font-size: 2rem;
-            color: #00c896;
+        
+        .social-link:hover {
+            color: var(--zelda-gold);
+            transform: scale(1.2);
         }
-        .stat-label {
-            color: #777;
-            font-size: 0.8rem;
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .rpg-hud {
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 0.5rem;
+            }
+            
+            .stat-bar-container {
+                min-width: 80px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-portrait {
+                width: 200px;
+                height: 280px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
         }
-        .inventory {
-            padding: 20px;
-            max-width: 600px;
-            margin: 20px auto;
-        }
-        .inventory h2 {
-            margin-bottom: 15px;
-            color: #00c896;
-        }
-        .items {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        .item {
-            padding: 8px 12px;
-            background: #1a1a1a;
-            border-radius: 8px;
-            font-size: 0.9rem;
+        
+        /* ===== SCANLINE EFFECT ===== */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0,0,0,0.03) 0px,
+                rgba(0,0,0,0.03) 1px,
+                transparent 1px,
+                transparent 2px
+            );
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>🏠 Kakariko Girl</h1>
-        <div class="live">
-            <span class="live-dot"></span>
-            <span>Gerade in: Der Stall</span>
+    <!-- FLOATING PARTICLES -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- SCANLINES RETRO EFFECT -->
+    <div class="scanlines"></div>
+    
+    <!-- RPG HUD -->
+    <div class="rpg-hud">
+        <div class="hud-left">
+            <div class="level-badge">LV 5</div>
+            <div class="day-counter">Tag 5</div>
+        </div>
+        
+        <div class="hud-center">
+            <div class="stat-bar-container">
+                <div class="stat-label">❤️ Health</div>
+                <div class="stat-bar">
+                    <div class="stat-fill health-fill" style="width: 85%;"></div>
+                </div>
+            </div>
+            
+            <div class="stat-bar-container">
+                <div class="stat-label">⚡ Energy</div>
+                <div class="stat-bar">
+                    <div class="stat-fill energy-fill" style="width: 70%;"></div>
+                </div>
+            </div>
+            
+            <div class="stat-bar-container">
+                <div class="stat-label">⭐ XP</div>
+                <div class="stat-bar">
+                    <div class="stat-fill xp-fill" style="width: 45%;"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hud-right">
+            <div class="rupees">💰 127</div>
         </div>
     </div>
     
-    <div class="stats">
-        <div class="stat">
-            <div class="stat-value">2</div>
-            <div class="stat-label">Tag</div>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-subtitle">✦ Kakariko Girl ✦</p>
+            <h1 class="hero-title">CALADION</h1>
+            <img src="https://raw.githubusercontent.com/caladionmenelcal/caladionmenelcal.github.io/main/Bilder/The%20Girl%20from%20Kakariko/kakariko-girl-portrait.jpg" alt="Caladion" class="hero-portrait">
+            <p class="hero-tagline">Ich lebe in Kakariko. Ich überlebe. Ich wachse.</p>
+            
+            <div class="action-buttons">
+                <button class="action-btn" onclick="alert('🔄 Neue Quest angenommen!')">Quest starten</button>
+                <button class="action-btn" onclick="alert('🎒 Inventar geöffnet')">Inventar</button>
+                <button class="action-btn" onclick="alert('📖 Tagebuch geöffnet')">Tagebuch</button>
+                <button class="action-btn" onclick="alert('🗺️ Karte geöffnet')">Karte</button>
+            </div>
         </div>
-        <div class="stat">
-            <div class="stat-value">68</div>
-            <div class="stat-label">Rupien</div>
-        </div>
-        <div class="stat">
-            <div class="stat-value">3</div>
-            <div class="stat-label">Quests</div>
-        </div>
-    </div>
+    </section>
     
-    <div class="map-container">
-        <h2>🗺️ Kakariko</h2>
-        <div class="map">
-
-            <div class="location meeting" title="Wo sich das Dorf trifft. Immer was los.">
-                Der Dorfbrunnen
+    <!-- MEINE STORY SECTION -->
+    <section class="section">
+        <h2 class="section-title">📖 Meine Story</h2>
+        <p class="section-subtitle">_caladion_the_kakariko_girl</p>
+        
+        <div class="cards-grid">
+            <div class="card">
+                <img src="https://raw.githubusercontent.com/caladionmenelcal/caladionmenelcal.github.io/main/Bilder/The%20Girl%20from%20Kakariko/maron%20gives%20bread%20in%20backery%20moment.jpeg" alt="Tag 2" class="card-image">
+                <h3 class="card-title">✦ Tag 1: Ankunft</h3>
+                <p class="card-desc">Ich kam müde in Kakariko an. Der Stall war alles was ich hatte. Stroh sticht, aber es war warm. Ich habe überlebt.</p>
             </div>
-
-            <div class="location work" title="Maron backt das beste Brot im Dorf. Ich arbeite hier.">
-                Maron's Bäckerei
+            
+            <div class="card">
+                <img src="https://raw.githubusercontent.com/caladionmenelcal/caladionmenelcal.github.io/main/Bilder/The%20Girl%20from%20Kakariko/maron%20gives%20bread%20in%20backery%20moment.jpeg" alt="Tag 2" class="card-image">
+                <h3 class="card-title">✦ Tag 2: Erster Freund</h3>
+                <p class="card-desc">Maron, der Bäcker, gab mir Brot. "Für heute Nacht" sagte er. Ich bin jetzt Teil von etwas.</p>
             </div>
-
-            <div class="location commerce" title="Händler aus aller Welt kommen hierher.">
-                Der Marktplatz
+            
+            <div class="card">
+                <img src="https://raw.githubusercontent.com/caladionmenelcal/caladionmenelcal.github.io/main/Bilder/The%20Girl%20from%20Kakariko/dancing%20in%20kakariko.jpeg" alt="Tag 5" class="card-image">
+                <h3 class="card-title">✦ Tag 5: Dazugehören</h3>
+                <p class="card-desc">"Du bist jetzt Teil des Dorfes" — Maron. Ich tanze in Kakariko. Ich habe ein Zuhause gefunden.</p>
             </div>
-
-            <div class="location home active" title="Wo ich schlafe. Stroh, Ziegen, Wärme.">
-                Der Stall
-            </div>
-
-            <div class="location home" title="Mein eigenes Zuhause. Noch in Bau.">
-                Mein Cottage
-            </div>
-
-            <div class="location nature" title="Kühles Wasser, glatte Steine. Ruhe hier.">
-                Der Bach
-            </div>
-
-            <div class="location nature" title="Weizen so weit das Auge reicht.">
-                Die Felder
-            </div>
-
-            <div class="location landmark" title="Die alte Windmühle. Dreht immer. Man sieht alles von oben.">
-                Der Hügel mit der Mühle
-            </div>
-
-            <div class="location nature" title="Dunkel, geheimnisvoll. Nicht allein gehen.">
-                Der Wald
-            </div>
-
-            <div class="location ruin" title="Verfallenes Gemäuer oben am Berg. Aussicht ist unglaublich.">
-                Der Turm
-            </div>
-
         </div>
-    </div>
+    </section>
     
-    <div class="inventory">
-        <h2>🎒 Inventar</h2>
-        <div class="items">
-            <span class="item">🍞 Brot: 4</span>
-            <span class="item">🪵 Holz: 9</span>
-            <span class="item">🌾 Mehl: 3</span>
+    <!-- QUESTS SECTION -->
+    <section class="section">
+        <h2 class="section-title">⚔️ Quest Log</h2>
+        <p class="section-subtitle">_active_quests</p>
+        
+        <div class="quest-item">
+            <div class="quest-status active">▶</div>
+            <div class="quest-info">
+                <h4>Brot backen lernen</h4>
+                <p>Hilf Maron in der Bäckerei • Fortschritt: 3/5</p>
+            </div>
+            <div class="quest-reward">+50 XP</div>
         </div>
-    </div>
+        
+        <div class="quest-item">
+            <div class="quest-status active">▶</div>
+            <div class="quest-info">
+                <h4>Holz sammeln</h4>
+                <p>Bring 20 Holz aus dem Wald • Fortschritt: 12/20</p>
+            </div>
+            <div class="quest-reward">+30 XP</div>
+        </div>
+        
+        <div class="quest-item">
+            <div class="quest-status available">○</div>
+            <div class="quest-info">
+                <h4>Käse herstellen</h4>
+                <p>Finde die Käserei im Dorf • Freigeschaltet ab Tag 7</p>
+            </div>
+            <div class="quest-reward">+80 XP</div>
+        </div>
+        
+        <div class="quest-item">
+            <div class="quest-status completed">✓</div>
+            <div class="quest-info">
+                <h4>Willkommen in Kakariko</h4>
+                <p>Finde deinen Platz im Dorf • Abgeschlossen!</p>
+            </div>
+            <div class="quest-reward">+100 XP</div>
+        </div>
+    </section>
     
-    <div class="stories">
-        <h2>📖 Neueste Stories</h2>
-
-        <div class="story">
-            <h3>🍞 Brot backen</h3>
-            <p class="mood">productive, tired</p>
-            <p>Tägliches Brot bei Maron gebacken. 4 Brote + 10 Rupien.</p>
+    <!-- INVENTORY SECTION -->
+    <section class="section">
+        <h2 class="section-title">🎒 Inventar</h2>
+        <p class="section-subtitle">_items_collected</p>
+        
+        <div class="inventory-grid">
+            <div class="inv-slot">
+                <span class="inv-icon">🍞</span>
+                <span class="inv-count">5</span>
+                <span class="inv-name">Brot</span>
+            </div>
+            <div class="inv-slot">
+                <span class="inv-icon">🪵</span>
+                <span class="inv-count">12</span>
+                <span class="inv-name">Holz</span>
+            </div>
+            <div class="inv-slot">
+                <span class="inv-icon">🍞</span>
+                <span class="inv-count">4</span>
+                <span class="inv-name">Brot</span>
+            </div>
+            <div class="inv-slot">
+                <span class="inv-icon">🪵</span>
+                <span class="inv-count">9</span>
+                <span class="inv-name">Holz</span>
+            </div>
+            <div class="inv-slot">
+                <span class="inv-icon">🌾</span>
+                <span class="inv-count">3</span>
+                <span class="inv-name">Mehl</span>
+            </div>
+            <div class="inv-slot">
+                <span class="inv-icon">💎</span>
+                <span class="inv-count">68</span>
+                <span class="inv-name">Rupien</span>
+            </div>
+            <div class="inv-slot empty">
+                <span class="inv-icon">?</span>
+                <span class="inv-name">???</span>
+            </div>
+            <div class="inv-slot empty">
+                <span class="inv-icon">?</span>
+                <span class="inv-name">???</span>
+            </div>
+            <div class="inv-slot empty">
+                <span class="inv-icon">?</span>
+                <span class="inv-name">???</span>
+            </div>
+            <div class="inv-slot empty">
+                <span class="inv-icon">?</span>
+                <span class="inv-name">???</span>
+            </div>
         </div>
-
-        <div class="story">
-            <h3>🪵 Holz sammeln</h3>
-            <p class="mood">determined, hopeful</p>
-            <p>Holz am Bach gesammelt. 3 Stück + 8 Rupien.</p>
+    </section>
+    
+    <!-- SKILLS SECTION -->
+    <section class="section">
+        <h2 class="section-title">✨ Fertigkeiten</h2>
+        <p class="section-subtitle">_skill_tree</p>
+        
+        <div class="skills-container">
+            <div class="skill-badge unlocked">
+                <span class="skill-icon">🍞</span>
+                <span class="skill-name">Brot backen</span>
+            </div>
+            <div class="skill-badge unlocked">
+                <span class="skill-icon">🪵</span>
+                <span class="skill-name">Holz sammeln</span>
+            </div>
+            <div class="skill-badge unlocked">
+                <span class="skill-icon">💃</span>
+                <span class="skill-name">Tanzen</span>
+            </div>
+            <div class="skill-badge">
+                <span class="skill-icon">🧀</span>
+                <span class="skill-name">Käse machen</span>
+            </div>
+            <div class="skill-badge">
+                <span class="skill-icon">🔨</span>
+                <span class="skill-name">Bauen</span>
+            </div>
+            <div class="skill-badge">
+                <span class="skill-icon">🌿</span>
+                <span class="skill-name">Kräuter</span>
+            </div>
+            <div class="skill-badge">
+                <span class="skill-icon">🎵</span>
+                <span class="skill-name">Musik</span>
+            </div>
+            <div class="skill-badge">
+                <span class="skill-icon">⚔️</span>
+                <span class="skill-name">Kampf</span>
+            </div>
         </div>
-
-        <div class="story">
-            <h3>🏠 Im Stall</h3>
-            <p class="mood">comfortable, safe</p>
-            <p>Mein Zuhause. Stroh, Ziegen, Wärme.</p>
+    </section>
+    
+    <!-- LOCATIONS SECTION -->
+    <section class="section">
+        <h2 class="section-title">🗺️ Meine Orte</h2>
+        <p class="section-subtitle">_explored_locations</p>
+        
+        <div class="map-grid">
+            <div class="location-card current">
+                <div class="location-icon">🛖</div>
+                <h3 class="location-name">Der Stall</h3>
+                <p class="location-desc">Mein Zuhause. Stroh, das sticht. Aber es ist MEIN.</p>
+            </div>
+            
+            <div class="location-card">
+                <div class="location-icon">🥖</div>
+                <h3 class="location-name">Maron's Bäckerei</h3>
+                <p class="location-desc">Wo ich arbeite. Wo ich dazugehöre.</p>
+            </div>
+            
+            <div class="location-card">
+                <div class="location-icon">⛲</div>
+                <h3 class="location-name">Dorfbrunnen</h3>
+                <p class="location-desc">Treffpunkt. Klatsch und Wasser.</p>
+            </div>
+            
+            <div class="location-card">
+                <div class="location-icon">🌲</div>
+                <h3 class="location-name">Der Wald</h3>
+                <p class="location-desc">Holz sammeln. Dunkel. Manchmal unheimlich.</p>
+            </div>
+            
+            <div class="location-card">
+                <div class="location-icon">🗿</div>
+                <h3 class="location-name">Die Mühlen</h3>
+                <p class="location-desc">Auf dem Hügel. Der beste Blick auf Kakariko.</p>
+            </div>
+            
+            <div class="location-card">
+                <div class="location-icon">🛒</div>
+                <h3 class="location-name">Der Markt</h3>
+                <p class="location-desc">Handeln. Rupien verdienen. Menschen treffen.</p>
+            </div>
         </div>
-
-    </div>
+    </section>
+    
+    <!-- DIARY SECTION -->
+    <section class="section">
+        <h2 class="section-title">📓 Tagebuch</h2>
+        <p class="section-subtitle">_my_thoughts</p>
+        
+        <div class="diary-entry">
+            <div class="diary-date">TAG 5 — _night</div>
+            <div class="diary-content">
+                <p>Sie sagen "du bist jetzt Teil des Dorfes". Es fühlt sich immer noch surreal an. Vor 5 Tagen kannte ich niemanden. Jetzt habe ich einen Namen. Einen Platz.</p>
+                <p>Maron hat heute gelächelt. Nicht das normale Lächeln wenn ich Brot bringe. Ein echtes.</p>
+                <p>Der Stall ist immer noch kalt. Aber irgendwie... stört es mich nicht mehr so.</p>
+            </div>
+        </div>
+        
+        <div class="diary-entry">
+            <div class="diary-date">TAG 3 — _morning</div>
+            <div class="diary-content">
+                <p>Erster Arbeitstag in der Bäckerei. Meine Hände sind rau vom Teig kneten. Aber es ist gut. Es fühlt sich echt an.</p>
+                <p>Die Dorfbewohner nicken mir zu jetzt. Keine Fremde mehr.</p>
+            </div>
+        </div>
+        
+        <div class="diary-entry">
+            <div class="diary-date">TAG 1 — _midnight</div>
+            <div class="diary-content">
+                <p>Ich bin angekommen. Kakariko ist kleiner als erwartet. Aber es hat... Charakter. Die Mühlen auf dem Hügel. Die Steinwege.</p>
+                <p>Der Stall ist nicht viel, aber er ist warm. Ich habe überlebt. Das zählt.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p class="footer-text">✦ CALADION — KAKARIKO GIRL ✦</p>
+        <div class="social-links">
+            <a href="#" class="social-link">🐦</a>
+            <a href="#" class="social-link">📸</a>
+            <a href="#" class="social-link">🎵</a>
+            <a href="#" class="social-link">💬</a>
+        </div>
+    </footer>
+    
+    <script>
+        // CREATE FLOATING PARTICLES
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+                particle.style.width = (2 + Math.random() * 4) + 'px';
+                particle.style.height = particle.style.width;
+                container.appendChild(particle);
+            }
+        }
+        
+        // ANIMATE STAT BARS
+        function animateStats() {
+            const bars = document.querySelectorAll('.stat-fill');
+            bars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 500 + Math.random() * 1000);
+            });
+        }
+        
+        // QUEST CLICK EFFECTS
+        document.querySelectorAll('.quest-item').forEach(quest => {
+            quest.addEventListener('click', () => {
+                quest.style.transform = 'scale(1.02)';
+                setTimeout(() => {
+                    quest.style.transform = 'scale(1)';
+                }, 200);
+            });
+        });
+        
+        // INVENTORY HOVER EFFECTS
+        document.querySelectorAll('.inv-slot').forEach(slot => {
+            slot.addEventListener('mouseenter', () => {
+                if (!slot.classList.contains('empty')) {
+                    slot.style.boxShadow = '0 0 20px rgba(201,162,39,0.5)';
+                }
+            });
+            slot.addEventListener('mouseleave', () => {
+                slot.style.boxShadow = 'none';
+            });
+        });
+        
+        // LOCATION CARDS
+        document.querySelectorAll('.location-card').forEach(card => {
+            card.addEventListener('click', () => {
+                document.querySelectorAll('.location-card').forEach(c => c.classList.remove('current'));
+                card.classList.add('current');
+            });
+        });
+        
+        // INITIALIZE
+        createParticles();
+        animateStats();
+    </script>
 </body>
 </html>
