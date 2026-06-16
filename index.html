@@ -77,6 +77,22 @@
             max-width: 600px;
             margin: 0 auto;
         }
+        .inventory {
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .inv-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .inv-item {
+            background: #151515;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+        }
         .story {
             padding: 20px;
             margin-bottom: 20px;
@@ -112,26 +128,6 @@
             color: #777;
             font-size: 0.8rem;
         }
-        .inventory {
-            padding: 20px;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-        .inventory h2 {
-            color: #7800ff;
-            margin-bottom: 15px;
-        }
-        .inv-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-        .inv-item {
-            padding: 10px;
-            background: #1a1a1a;
-            border-radius: 8px;
-            text-align: center;
-        }
     </style>
 </head>
 <body>
@@ -139,7 +135,7 @@
         <h1>🏠 Kakariko Girl</h1>
         <div class="live">
             <span class="live-dot"></span>
-            <span>Gerade in: STABLE (Der Stall)</span>
+            <span>Gerade in: Der Stall</span>
         </div>
     </div>
     
@@ -149,11 +145,11 @@
             <div class="stat-label">Tag</div>
         </div>
         <div class="stat">
-            <div class="stat-value">266</div>
+            <div class="stat-value">323</div>
             <div class="stat-label">Rupien</div>
         </div>
         <div class="stat">
-            <div class="stat-value">9</div>
+            <div class="stat-value">13</div>
             <div class="stat-label">Quests</div>
         </div>
     </div>
@@ -161,12 +157,11 @@
     <div class="inventory">
         <h2>🎒 Inventar</h2>
         <div class="inv-grid">
-            <div class="inv-item">🍞 Brot: 6</div>
-            <div class="inv-item">🪵 Holz: 11</div>
-            <div class="inv-item">🌾 Mehl: 1</div>
-            <div class="inv-item">🥛 Milch: 1</div>
-            <div class="inv-item">🧀 Käse: 2</div>
-            <div class="inv-item">🧶 Wolle: 1</div>
+            <div class="inv-item">🍞 Brot: 10</div>
+            <div class="inv-item">🪵 Holz: 7</div>
+            <div class="inv-item">🥛 Milch: 4</div>
+            <div class="inv-item">🧀 Käse: 3</div>
+            <div class="inv-item">🧶 Wolle: 2</div>
             <div class="inv-item">🪨 Stein: 2</div>
         </div>
     </div>
