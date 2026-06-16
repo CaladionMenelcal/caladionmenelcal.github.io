@@ -495,6 +495,30 @@
             .game-menu { flex-direction: column; }
             .menu-btn { width: 100%; }
         }
+    
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .story {
+            background: rgba(0,0,0,0.35);
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px;
+            padding: 1.25rem;
+        }
+        .story h3 {
+            font-size: 1.1rem;
+            color: var(--zelda-gold-bright);
+            margin-bottom: 0.5rem;
+        }
+        .story .mood {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
     </style>
 </head>
 <body>
