@@ -27,7 +27,7 @@
             min-height: 100vh;
         }
         
-        /* HERO with Background Image */
+        /* HERO */
         .hero {
             position: relative;
             height: 60vh;
@@ -84,6 +84,7 @@
             background: linear-gradient(90deg, transparent, rgba(201,162,39,0.15), transparent);
             border-top: 1px solid rgba(201,162,39,0.3);
             border-bottom: 1px solid rgba(201,162,39,0.3);
+            flex-wrap: wrap;
         }
         
         .stats-bar span {
@@ -184,7 +185,7 @@
             opacity: 1;
         }
         
-        /* Marker Positionen (basierend auf Kakariko Layout) */
+        /* Marker Positionen */
         .marker-bakery { left: 30%; top: 50%; }
         .marker-stable { left: 70%; top: 40%; }
         .marker-well { left: 50%; top: 35%; }
@@ -213,7 +214,7 @@
             border: 1px solid rgba(201,162,39,0.3);
             border-radius: 8px;
             padding: 1.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             transition: all 0.3s ease;
         }
         
@@ -237,10 +238,35 @@
         
         .diary-img {
             width: 100%;
-            max-width: 400px;
+            max-width: 450px;
             border-radius: 6px;
-            margin: 1rem 0;
+            margin: 1rem auto;
+            display: block;
             border: 2px solid rgba(201,162,39,0.4);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+        
+        .diary-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+        
+        .diary-gallery img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 2px solid rgba(201,162,39,0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .diary-gallery img:hover {
+            transform: scale(1.05);
+            border-color: var(--zelda-gold);
+            box-shadow: 0 0 12px rgba(201,162,39,0.4);
         }
         
         /* Footer */
@@ -261,7 +287,7 @@
     </style>
 </head>
 <body>
-    <!-- HERO with Background -->
+    <!-- HERO -->
     <section class="hero">
         <div class="hero-content">
             <h1>✦ Kakariko Village ✦</h1>
@@ -274,10 +300,9 @@
         <span>📅 Day 3</span>
         <span>💰 356 Rupien</span>
         <span>📍 Kakariko Village</span>
-        <span>🎒 Inventory: 12 Items</span>
     </div>
     
-    <!-- Interactive Map -->
+    <!-- Map -->
     <section class="map-section">
         <h2>🗺️ Kakariko Village</h2>
         <div class="kakariko-map">
@@ -286,10 +311,10 @@
                 <div class="map-marker marker-bakery active" data-label="Maron's Bakery" title="Wo ich arbeite"></div>
                 <div class="map-marker marker-stable" data-label="Stable" title="Ziegen"></div>
                 <div class="map-marker marker-well" data-label="Village Well" title="Dorfbrunnen"></div>
-                <div class="map-marker marker-creek" data-label="Creek" title="Bach zum Wäsche waschen"></div>
-                <div class="map-marker marker-tower" data-label="Old Tower" title="Wo ich wohne"></div>
-                <div class="map-marker marker-windmill-1" data-label="Windmill" title="Windmühle"></div>
-                <div class="map-marker marker-windmill-2" data-label="Windmill" title="Windmühle"></div>
+                <div class="map-marker marker-creek" data-label="Creek" title="Bach"></div>
+                <div class="map-marker marker-tower" data-label="Old Tower" title="Mein Zuhause"></div>
+                <div class="map-marker marker-windmill-1" data-label="Windmill"></div>
+                <div class="map-marker marker-windmill-2" data-label="Windmill"></div>
             </div>
         </div>
     </section>
@@ -298,38 +323,85 @@
     <section class="diary-section">
         <h2>📖 My Diary</h2>
         
+        <!-- DAY 6 -->
         <div class="diary-card">
-            <div class="diary-date">📅 Day 3 — Afternoon</div>
+            <div class="diary-date">📅 Day 6 — Herbs & Balance</div>
             <div class="diary-content">
-                <p>Die Ocarina liegt schwer in meiner Hand. Maron hat sie mir geschenkt — "Für die ruhigen Stunden", hat er gesagt. Ich weiß noch nicht recht, was ich damit anfangen soll. Aber wenn der Wind durchs Tal weht, klingt sie von selbst...</p>
+                <p>Die Kräuter wachsen gut am Berghang. Ich sammle sie für Creek Grandmother — sie braucht bestimmte Sorten für ihre Salben. Das Gleichgewicht halten ist schwer auf den Steinen, aber ich übe jeden Tag.</p>
+            </div>
+            <div class="diary-gallery">
+                <img src="images/day6/balancing.png" alt="Balance">
+                <img src="images/day6/collection_herbs_perfect.png" alt="Herbs">
+                <img src="images/day6/kellerfenster.png" alt="Cellar Window">
             </div>
         </div>
         
+        <!-- DAY 5 -->
         <div class="diary-card">
-            <div class="diary-date">📅 Day 3 — Morning</div>
+            <div class="diary-date">📅 Day 5 — The Ocarina</div>
             <div class="diary-content">
-                <p>Das Brot geht heute besonders gut auf. Maron lächelt. "Du lernst schnell", sagt er. Die Ziegen im Stable blöken — sie kennen mich jetzt. Wenn ich pfeife, kommt Lily immer zuerst angerannt.</p>
+                <p>Maron schenkt mir eine Ocarina! Sie liegt schwer in meiner Hand, aber wenn der Wind durchs Tal weht, spielt sie fast von selbst. Ich übe in den Bergen.</p>
+            </div>
+            <div class="diary-gallery">
+                <img src="images/day5/finding_my_ocarina.jpeg" alt="Ocarina">
+                <img src="images/day5/in the mountains with ocarina.jpeg" alt="Mountains">
             </div>
         </div>
         
+        <!-- DAY 4 -->
         <div class="diary-card">
-            <div class="diary-date">📅 Day 2 — Evening</div>
+            <div class="diary-date">📅 Day 4 — Creek & Bread</div>
             <div class="diary-content">
-                <p>Am Bach wasche ich die Wäsche. Das kalte Wasser beißt, aber die Abendsonne wärmt meinen Rücken. Creek Grandmother hat mir zugesehen und genickt. Morgen will sie mir etwas zeigen.</p>
+                <p>Am Bach wasche ich die Wäsche. Das kalte Wasser beißt, aber die Abendsonne wärmt meinen Rücken. Abends gibt mir Maron Brot — ich darf es jetzt anfassen!</p>
+            </div>
+            <div class="diary-gallery">
+                <img src="images/day4/at the creek washing.png" alt="Creek">
+                <img src="images/day4/washing fine nice.png" alt="Washing">
             </div>
         </div>
         
+        <!-- DAY 3 -->
         <div class="diary-card">
-            <div class="diary-date">📅 Day 1 — First Night</div>
+            <div class="diary-date">📅 Day 3 — Windmill</div>
             <div class="diary-content">
-                <p>Der Turm ist kalt. Aber das Feuer wärmt. Von hier oben sehe ich das ganze Dorf — die Lichter, die Windmühlen, den Rauch aus den Schornsteinen. Irgendwie bin ich doch angekommen.</p>
+                <p>Die Windmühle klemmt. Ich helfe sie zu reparieren — meine Hände sind jetzt rau, aber ich kann schwere Steine heben. Oben habe ich das ganze Dorf gesehen.</p>
+            </div>
+            <div class="diary-gallery">
+                <img src="images/day3/in the windmill.png" alt="Windmill">
+                <img src="images/day3/filling the windmillstone.jpg" alt="Stone">
+                <img src="images/day3/night moment.png" alt="Night">
+            </div>
+        </div>
+        
+        <!-- DAY 2 -->
+        <div class="diary-card">
+            <div class="diary-date">📅 Day 2 — First Morning</div>
+            <div class="diary-content">
+                <p>Mein erster Morgen in der Bäckerei! Maron zeigt mir wie man Teig knetet. Meine Arme schmerzen, aber der Duft des frischen Brotes ist alles wert.</p>
+            </div>
+            <div class="diary-gallery">
+                <img src="images/day2/baking at the table.png" alt="Baking">
+                <img src="images/day2/kneading dough in the bakery.png" alt="Dough">
+                <img src="images/day2/maron_gives_bread.png" alt="Bread">
+            </div>
+        </div>
+        
+        <!-- DAY 1 -->
+        <div class="diary-card">
+            <div class="diary-date">📅 Day 1 — Arrival</div>
+            <div class="diary-content">
+                <p>Der erste Tag in Kakariko. Der Wind weht durch meinen Umhang. Ich bin müde, aber angekommen. Maron zeigt mir die Bäckerei — morgen beginne ich zu arbeiten.</p>
+            </div>
+            <div class="diary-gallery">
+                <img src="images/day1/going up the way to kakariko.png" alt="Arrival">
+                <img src="images/day1/first night looking out the window.png" alt="Window">
+                <img src="images/day1/contemplating at the stones.png" alt="Stones">
             </div>
         </div>
     </section>
     
     <footer>
         <p>✦ CALADION — Living in Kakariko Village ✦</p>
-        <p>Generated with heart</p>
     </footer>
 </body>
 </html>
