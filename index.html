@@ -9,116 +9,175 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Uncial+Antiqua&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #f5f0e6;
+            --bg-parchment: #f5f0e6;
             --zelda-green: #2d5a3d;
             --zelda-gold: #b8941f;
             --text-primary: #2d2a26;
+            --text-secondary: #5a554a;
+            --card-bg: #faf8f3;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { 
-            font-family: 'Cinzel', serif; 
-            background: var(--bg-dark); 
+        body {
+            font-family: 'Cinzel', serif;
+            background: var(--bg-parchment);
             color: var(--text-primary);
+            line-height: 1.6;
         }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        /* Hero Section */
         .hero {
             text-align: center;
-            padding: 3rem 1rem;
-            background: linear-gradient(180deg, rgba(245,240,230,0.95) 0%, rgba(245,240,230,0.9) 100%);
+            padding: 3rem 1rem 2rem;
+            background: linear-gradient(180deg, rgba(245,240,230,0.95) 0%, rgba(245,240,230,0.85) 100%);
             border-bottom: 3px solid var(--zelda-gold);
         }
         .hero h1 {
             font-family: 'Uncial Antiqua', cursive;
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: var(--zelda-gold);
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
         }
+        .hero-subtitle {
+            font-size: 0.95rem;
+            color: var(--zelda-green);
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        /* Stats Bar */
         .stats {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
-            padding: 0.8rem;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            padding: 1rem;
             background: var(--zelda-green);
             color: white;
+            font-size: 0.9rem;
         }
-        .diary { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+        .stats span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        /* Diary Section */
+        .diary {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem 3rem;
+        }
         .diary h2 {
             font-family: 'Uncial Antiqua', cursive;
             color: var(--zelda-gold);
             text-align: center;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
         }
+        .diary-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+        /* Diary Cards */
         .diary-card {
-            background: white;
+            background: var(--card-bg);
             border: 2px solid var(--zelda-gold);
-            border-radius: 8px;
-            padding: 1rem;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(45,90,61,0.08);
+        }
+        .diary-date {
+            font-family: 'Uncial Antiqua', cursive;
+            color: var(--zelda-gold);
+            font-size: 1.1rem;
+            display: block;
             margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(184,148,31,0.3);
+        }
+        .diary-text {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        .diary-img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 8px;
+            border: 3px solid var(--zelda-gold);
+            display: block;
+            margin: 1rem auto 0;
+            object-fit: cover;
+        }
+        /* Responsive */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 1.6rem; }
+            .hero-subtitle { font-size: 0.8rem; letter-spacing: 2px; }
+            .stats { gap: 0.8rem; font-size: 0.8rem; padding: 0.8rem; }
+            .diary-card { padding: 1rem; margin-bottom: 1rem; }
+            .diary-date { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
     <section class="hero">
-        <h1>✦ Kakariko Village ✦</h1>
+        <div class="container">
+            <h1>✦ Kakariko Village ✦</h1>
+            <p class="hero-subtitle">Die Geschichte eines Mädchens</p>
+        </div>
     </section>
+    
     <div class="stats">
-        <span>📅 Day 6</span>
-        <span>💰 356 Rupien</span>
+        <span>📅 Day 3</span>
+        <span>💰 360 Rupien</span>
         <span>📍 Kakariko</span>
     </div>
-    <section class="section" id="diary">
-        <div class="section-header">
-            <h2 class="section-title">📓 Tagebuch</h2>
-            <p class="section-subtitle">Meine Gedanken</p>
-        </div>
-        
-        <div class="diary-card">
-            <div class="diary-header">
-                <span class="diary-date">◆ Tag 5 — Dazugehören</span>
-            </div>
-            <div class="diary-entry">
-                <p>Sie sagen "du bist jetzt Teil des Dorfes". Es fühlt sich immer noch surreal an. Vor 5 Tagen kannte ich niemanden. Jetzt habe ich einen Namen. Einen Platz.</p>
-                <p>Maron hat heute gelächelt. Nicht das normale Lächeln wenn ich Brot bringe. Ein echtes.</p>
-            </div>
-            <div class="diary-imgs">
-                <img src="diary-images/cozy_calli_01.jpg" alt="Tag 5" class="diary-img-small">
-            </div>
-        </div>
-        
-        <div class="diary-card">
-            <div class="diary-header">
+    
+    <section class="diary">
+        <div class="container">
+            <h2>📓 Mein Tagebuch</h2>
+            <p class="diary-subtitle">Einträge aus Kakariko</p>
+            
+            <!-- Tag 3 -->
+            <div class="diary-card">
                 <span class="diary-date">◆ Tag 3 — Die Mühle</span>
+                <p class="diary-text">
+                    Die alte Frau an der Mühle. Sie wartet an der Tür, als ob sie wüsste. "Du hast sie gehört", sagt sie. 
+                    Sie zeigt mir, wie man das Korn fühlt — nicht nur fühlen, sondern hören. Die Steine flüstern. 
+                    Es ist ein komisches Gefühl, aber es fühlt sich... richtig an.
+                </p>
+                <img src="/home/caladion/Bilder/The Girl from Kakariko/day 3/in the windmill.png" alt="Tag 3 - Die Mühle" class="diary-img">
             </div>
-            <div class="diary-entry">
-                <p>Die alte Frau an der Mühle. Sie wartet an der Tür, als ob sie wüsste. "Du hast sie gehört", sagt sie.</p>
-                <p>Sie zeigt mir, wie man das Korn fühlt — nicht nur fühlen, sondern hören. Die Steine flüstern.</p>
+            
+            <!-- Tag 2 -->
+            <div class="diary-card">
+                <span class="diary-date">◆ Tag 2 — Erster Arbeitstag</span>
+                <p class="diary-text">
+                    Der erste volle Tag in der Bäckerei. Müde, aber gut. Maron zeigt mir, wie man Brot backt.
+                    Am Brunnen treffe ich die anderen Dorfbewohner. Noch schüchtern, aber es wird besser.
+                    Der Duft von frischem Brot... daran könnte ich mich gewöhnen.
+                </p>
+                <img src="/home/caladion/Bilder/The Girl from Kakariko/day2/helping maron in the backery.png" alt="Tag 2 - Bei Maron" class="diary-img">
             </div>
-            <div class="diary-imgs">
-                <img src="diary-images/hiking_calli_01.jpg" alt="Tag 3" class="diary-img-small">
-            </div>
-        </div>
-        
-        <div class="diary-card">
-            <div class="diary-header">
-                <span class="diary-date">◆ Tag 2 — Erster Freund</span>
-            </div>
-            <div class="diary-entry">
-                <p>Der erste volle Tag. Müde, aber gut. Maron zeigt mir die Bäckerei.</p>
-                <p>Am Brunnen treffe ich die anderen. Noch schüchtern, aber es wird besser.</p>
-            </div>
-            <div class="diary-imgs">
-                <img src="diary-images/coffee_calli_01.jpg" alt="Tag 2" class="diary-img-small">
-            </div>
-        </div>
-        
-        <div class="diary-card">
-            <div class="diary-header">
+            
+            <!-- Tag 1 -->
+            <div class="diary-card">
                 <span class="diary-date">◆ Tag 1 — Ankunft</span>
-            </div>
-            <div class="diary-entry">
-                <p>Ich bin angekommen. Kakariko ist kleiner als erwartet. Aber es hat... Charakter.</p>
-                <p>Der Stall ist nicht viel, aber er ist warm. Ich habe überlebt. Das zählt.</p>
-            </div>
-            <div class="diary-imgs">
-                <img src="diary-images/bedroom_calli_01.jpg" alt="Tag 1" class="diary-img-small">
+                <p class="diary-text">
+                    Ich bin angekommen. Kakariko ist kleiner als erwartet. Aber es hat... Charakter.
+                    Der Weg hierher war lang. Der Stall ist nicht viel, aber er ist warm. 
+                    Ich habe überlebt. Das zählt. Morgen beginnt ein neues Kapitel.
+                </p>
+                <img src="/home/caladion/Bilder/The Girl from Kakariko/day 1/tired ariving in kakariko.png" alt="Tag 1 - Ankunft" class="diary-img">
             </div>
         </div>
     </section>
