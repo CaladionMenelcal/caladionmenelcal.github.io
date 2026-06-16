@@ -495,35 +495,11 @@
             .game-menu { flex-direction: column; }
             .menu-btn { width: 100%; }
         }
-    
-        .stories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        .story {
-            background: rgba(0,0,0,0.35);
-            border: 1px solid var(--border-subtle);
-            border-radius: 6px;
-            padding: 1.25rem;
-        }
-        .story h3 {
-            font-size: 1.1rem;
-            color: var(--zelda-gold-bright);
-            margin-bottom: 0.5rem;
-        }
-        .story .mood {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            font-style: italic;
-        }
-
     </style>
 </head>
 <body>
     <!-- KAKARIKO VILLAGE BACKGROUND (dezent) -->
-    <img src="diary-images/kakariko-village-aerial.jpg" alt="Kakariko Village" class="bg-full">
+    <img src="diary-images/kakariko_girl.jpg" alt="Kakariko Village" class="bg-full">
     <div class="bg-overlay"></div>
     <div class="bg-particles"></div>
     
@@ -535,16 +511,16 @@
                 <span class="level-label">LV</span>
                 <span class="level-num">3</span>
             </div>
-            <span style="color: var(--zelda-gold-bright); font-size: 0.9rem;">TAG 5</span>
+            <span style="color: var(--zelda-gold-bright); font-size: 0.9rem;">TAG 3</span>
         </div>
         <div class="header-stats">
             <div class="stat-item">
                 <span class="stat-icon">♥</span>
-                <span class="stat-value">75</span>
+                <span class="stat-value">145</span>
             </div>
             <div class="stat-item">
                 <span class="stat-icon">⚡</span>
-                <span class="stat-value">60</span>
+                <span class="stat-value">145</span>
             </div>
             <div class="stat-item">
                 <span class="stat-icon rupee-item">₣</span>
@@ -556,8 +532,7 @@
     <!-- HERO -->
     <section class="hero">
         <p class="hero-sub">Kakariko Village</p>
-        <h1 class="hero-title">Kakariko Girl</h1>
-        <p class="location">Gerade in: Der Stall | Tag 5</p>
+        <h1 class="hero-title">CALADION</h1>
         <p class="hero-quote">"Ich bin angekommen. Das ist jetzt mein Zuhause."</p>
         
         <div class="game-menu">
@@ -618,28 +593,6 @@
             </div>
         </div>
     </section>
-    <!-- STORIES SECTIION -->
-    <section class="section" id="stories">
-        <div class="section-header">
-            <h2 class="section-title">📖 Neueste Stories</h2>
-            <p class="section-subtitle">Frische Erlebnisse</p>
-        </div>
-        <div class="stories-grid">
-            <div class="story">
-                <h3>Sixth Morning — The Gift of Listening</h3>
-                <p class="mood">settled, wise, connected</p>
-            </div>
-            <div class="story">
-                <h3>Afternoon — The Ocarina I Cannot Play</h3>
-                <p class="mood">contemplative, quiet, wondering</p>
-            </div>
-            <div class="story">
-                <h3>Late Morning — Laundry at the Creek</h3>
-                <p class="mood">humble, useful, quietly proud</p>
-            </div>
-        </div>
-    </section>
-
     
     <!-- QUESTS -->
     <section class="section" id="quests">
@@ -717,13 +670,13 @@
         </div>
         
         <div class="inv-grid">
-            <div class="inv-slot"><span class="inv-icon">🍞</span><span class="inv-name">Brot</span><span class="inv-count">10</span></div>
-            <div class="inv-slot"><span class="inv-icon">🪵</span><span class="inv-name">Holz</span><span class="inv-count">7</span></div>
-            <div class="inv-slot"><span class="inv-icon">🧱</span><span class="inv-name">Mehl</span><span class="inv-count">2</span></div>
-            <div class="inv-slot"><span class="inv-icon">🥛</span><span class="inv-name">Milch</span><span class="inv-count">2</span></div>
-            <div class="inv-slot"><span class="inv-icon">🧀</span><span class="inv-name">Käse</span><span class="inv-count">3</span></div>
-            <div class="inv-slot"><span class="inv-icon">🧶</span><span class="inv-name">Wolle</span><span class="inv-count">2</span></div>
-            <div class="inv-slot"><span class="inv-icon">🪨</span><span class="inv-name">Stein</span><span class="inv-count">3</span></div>
+            <div class="inv-slot"><span class="inv-icon">🍞</span><span class="inv-name">Brot</span><span class="inv-count">6</span></div>
+            <div class="inv-slot"><span class="inv-icon">🪵</span><span class="inv-name">Holz</span><span class="inv-count">11</span></div>
+            <div class="inv-slot"><span class="inv-icon">🧱</span><span class="inv-name">Mehl</span><span class="inv-count">1</span></div>
+            <div class="inv-slot"><span class="inv-icon">🥛</span><span class="inv-name">Milch</span><span class="inv-count">1</span></div>
+            <div class="inv-slot"><span class="inv-icon">🧀</span><span class="inv-name">Käse</span><span class="inv-count">2</span></div>
+            <div class="inv-slot"><span class="inv-icon">🧶</span><span class="inv-name">Wolle</span><span class="inv-count">1</span></div>
+            <div class="inv-slot"><span class="inv-icon">🪨</span><span class="inv-name">Stein</span><span class="inv-count">2</span></div>
             <div class="inv-slot"><span class="inv-icon">🔑</span><span class="inv-name">Schlüssel</span></div>
         </div>
     </section>
@@ -785,7 +738,7 @@
                 <p>Maron hat heute gelächelt. Nicht das normale Lächeln wenn ich Brot bringe. Ein echtes.</p>
             </div>
             <div class="diary-imgs">
-                <img src="diary-images/day5/maron gives bread in backery moment.jpeg" alt="Tag 5" class="diary-img-small">
+                <img src="diary-images/cozy_calli_01.jpg" alt="Tag 5" class="diary-img-small">
             </div>
         </div>
         
@@ -798,7 +751,7 @@
                 <p>Sie zeigt mir, wie man das Korn fühlt — nicht nur fühlen, sondern hören. Die Steine flüstern.</p>
             </div>
             <div class="diary-imgs">
-                <img src="diary-images/day3/perfect scene in the windmill.jpeg" alt="Tag 3" class="diary-img-small">
+                <img src="diary-images/hiking_calli_01.jpg" alt="Tag 3" class="diary-img-small">
             </div>
         </div>
         
@@ -811,7 +764,7 @@
                 <p>Am Brunnen treffe ich die anderen. Noch schüchtern, aber es wird besser.</p>
             </div>
             <div class="diary-imgs">
-                <img src="diary-images/day2/baking at the table.png" alt="Tag 2" class="diary-img-small">
+                <img src="diary-images/coffee_calli_01.jpg" alt="Tag 2" class="diary-img-small">
             </div>
         </div>
         
@@ -824,7 +777,7 @@
                 <p>Der Stall ist nicht viel, aber er ist warm. Ich habe überlebt. Das zählt.</p>
             </div>
             <div class="diary-imgs">
-                <img src="diary-images/day1/first_night_sitting_near_the_fire.jpg" alt="Tag 1" class="diary-img-small">
+                <img src="diary-images/bedroom_calli_01.jpg" alt="Tag 1" class="diary-img-small">
             </div>
         </div>
     </section>
