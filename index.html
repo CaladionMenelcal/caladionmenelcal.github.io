@@ -40,6 +40,21 @@
             min-height: 100vh;
         }
         
+        /* ===== KAKARIKO VILLAGE BACKGROUND ===== */
+        .bg-full {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('https://raw.githubusercontent.com/CaladionMenelcal/caladionmenelcal.github.io/master/Bilder/The%20Girl%20from%20Kakariko/kakariko-village-aerial.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.4;
+            z-index: -1;
+        }
+        
         /* ===== FLOATING PARTICLES ===== */
         .particles {
             position: fixed;
@@ -745,6 +760,7 @@
     </style>
 </head>
 <body>
+    <div class="bg-full"></div>
     <!-- FLOATING PARTICLES -->
     <div class="particles" id="particles"></div>
     
