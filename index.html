@@ -30,8 +30,8 @@
         /* HERO */
         .hero {
             position: relative;
-            height: 60vh;
-            min-height: 400px;
+            height: 50vh;
+            min-height: 350px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -57,7 +57,7 @@
         
         .hero h1 {
             font-family: 'Cinzel', serif;
-            font-size: 3.5rem;
+            font-size: 3rem;
             color: var(--zelda-gold);
             text-shadow: 0 0 40px rgba(201,162,39,0.4), 2px 2px 8px rgba(0,0,0,0.8);
             margin-bottom: 0.5rem;
@@ -70,7 +70,7 @@
         }
         
         .hero .subtitle {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             color: var(--text-main);
             font-style: italic;
         }
@@ -89,14 +89,14 @@
         
         .stats-bar span {
             font-family: 'Cinzel', serif;
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--zelda-gold);
         }
         
         /* Map Section */
         .map-section {
-            max-width: 1000px;
-            margin: 3rem auto;
+            max-width: 900px;
+            margin: 2rem auto;
             padding: 0 1rem;
         }
         
@@ -104,8 +104,8 @@
             font-family: 'Cinzel', serif;
             color: var(--zelda-gold);
             text-align: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
         }
         
         .kakariko-map {
@@ -125,7 +125,7 @@
                 radial-gradient(circle at 20% 80%, rgba(45,90,61,0.2) 0%, transparent 30%),
                 radial-gradient(circle at 80% 20%, rgba(45,90,61,0.15) 0%, transparent 25%),
                 url('https://images.unsplash.com/photo-1448375240586-882707db888b?w=1000') center/cover;
-            opacity: 0.6;
+            opacity: 0.5;
         }
         
         .map-markers {
@@ -137,20 +137,20 @@
         
         .map-marker {
             position: absolute;
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             background: var(--zelda-gold);
             border: 3px solid var(--bg-dark);
             cursor: pointer;
             transform: translate(-50%, -50%);
             transition: all 0.3s ease;
-            box-shadow: 0 0 12px rgba(201,162,39,0.6);
+            box-shadow: 0 0 10px rgba(201,162,39,0.6);
         }
         
         .map-marker:hover {
             transform: translate(-50%, -50%) scale(1.3);
-            box-shadow: 0 0 20px rgba(201,162,39,0.9);
+            box-shadow: 0 0 16px rgba(201,162,39,0.9);
         }
         
         .map-marker.active {
@@ -159,8 +159,8 @@
         }
         
         @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 12px rgba(45,90,61,0.6); }
-            50% { box-shadow: 0 0 24px rgba(45,90,61,0.9); }
+            0%, 100% { box-shadow: 0 0 10px rgba(45,90,61,0.6); }
+            50% { box-shadow: 0 0 20px rgba(45,90,61,0.9); }
         }
         
         .map-marker::after {
@@ -173,7 +173,7 @@
             padding: 4px 8px;
             border-radius: 4px;
             font-family: 'Cinzel', serif;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--zelda-gold);
             white-space: nowrap;
             opacity: 0;
@@ -194,10 +194,10 @@
         .marker-windmill-1 { left: 85%; top: 20%; }
         .marker-windmill-2 { left: 90%; top: 35%; }
         
-        /* Diary Section */
+        /* Diary Section - NUR 1 BILD PRO TAG */
         .diary-section {
-            max-width: 900px;
-            margin: 3rem auto;
+            max-width: 700px;
+            margin: 2rem auto;
             padding: 0 1rem;
         }
         
@@ -206,15 +206,15 @@
             color: var(--zelda-gold);
             text-align: center;
             margin-bottom: 1.5rem;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
         }
         
         .diary-card {
             background: var(--bg-card);
             border: 1px solid rgba(201,162,39,0.3);
             border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
             transition: all 0.3s ease;
         }
         
@@ -227,18 +227,19 @@
         .diary-date {
             font-family: 'Cinzel', serif;
             color: var(--zelda-gold);
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
         }
         
         .diary-content {
             color: var(--text-main);
-            line-height: 1.8;
+            font-size: 1rem;
+            line-height: 1.7;
         }
         
         .diary-img {
             width: 100%;
-            max-width: 450px;
+            max-width: 350px;
             border-radius: 6px;
             margin: 1rem auto;
             display: block;
@@ -246,43 +247,20 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.4);
         }
         
-        .diary-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 0.75rem;
-            margin: 1rem 0;
-        }
-        
-        .diary-gallery img {
-            width: 100%;
-            aspect-ratio: 1;
-            object-fit: cover;
-            border-radius: 4px;
-            border: 2px solid rgba(201,162,39,0.3);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .diary-gallery img:hover {
-            transform: scale(1.05);
-            border-color: var(--zelda-gold);
-            box-shadow: 0 0 12px rgba(201,162,39,0.4);
-        }
-        
         /* Footer */
         footer {
             text-align: center;
             padding: 2rem;
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             border-top: 1px solid rgba(201,162,39,0.2);
-            margin-top: 3rem;
+            margin-top: 2rem;
         }
         
         @media (max-width: 600px) {
             .hero h1 { font-size: 2rem; }
-            .stats-bar { gap: 1rem; flex-wrap: wrap; }
-            .map-marker { width: 18px; height: 18px; }
+            .stats-bar { gap: 1rem; }
+            .map-marker { width: 16px; height: 16px; }
         }
     </style>
 </head>
@@ -297,7 +275,7 @@
     
     <!-- Stats -->
     <div class="stats-bar">
-        <span>📅 Day 3</span>
+        <span>📅 Day 6</span>
         <span>💰 356 Rupien</span>
         <span>📍 Kakariko Village</span>
     </div>
@@ -319,84 +297,62 @@
         </div>
     </section>
     
-    <!-- Diary -->
+    <!-- Diary - GENAU 1 BILD PRO TAG, 6 TAGE -->
     <section class="diary-section">
         <h2>📖 My Diary</h2>
         
         <!-- DAY 6 -->
         <div class="diary-card">
-            <div class="diary-date">📅 Day 6 — Herbs & Balance</div>
+            <div class="diary-date">📅 Day 6 — The Gift of Listening</div>
             <div class="diary-content">
-                <p>Die Kräuter wachsen gut am Berghang. Ich sammle sie für Creek Grandmother — sie braucht bestimmte Sorten für ihre Salben. Das Gleichgewicht halten ist schwer auf den Steinen, aber ich übe jeden Tag.</p>
+                <p>Der Morgen beginnt früh. Maron zeigt mir, wie man zuhört — nicht nur den Gästen, sondern dem Teig selbst. Es ist ein Geschenk, still zu sein.</p>
             </div>
-            <div class="diary-gallery">
-                <img src="images/day6/balancing.png" alt="Balance">
-                <img src="images/day6/collection_herbs_perfect.png" alt="Herbs">
-                <img src="images/day6/kellerfenster.png" alt="Cellar Window">
-            </div>
+            <img class="diary-img" src="images/day6/balancing.png" alt="Day 6">
         </div>
         
         <!-- DAY 5 -->
         <div class="diary-card">
-            <div class="diary-date">📅 Day 5 — The Ocarina</div>
+            <div class="diary-date">📅 Day 5 — Laundry at the Creek</div>
             <div class="diary-content">
-                <p>Maron schenkt mir eine Ocarina! Sie liegt schwer in meiner Hand, aber wenn der Wind durchs Tal weht, spielt sie fast von selbst. Ich übe in den Bergen.</p>
+                <p>Am Bach wasche ich die Wäsche. Das kalte Wasser beißt in meine Finger, aber die Abendsonne wärmt mein Gesicht.</p>
             </div>
-            <div class="diary-gallery">
-                <img src="images/day5/finding_my_ocarina.jpeg" alt="Ocarina">
-                <img src="images/day5/in the mountains with ocarina.jpeg" alt="Mountains">
-            </div>
+            <img class="diary-img" src="images/day4/at the creek washing.png" alt="Day 5">
         </div>
         
         <!-- DAY 4 -->
         <div class="diary-card">
-            <div class="diary-date">📅 Day 4 — Creek & Bread</div>
+            <div class="diary-date">📅 Day 4 — Listening in the Bakery</div>
             <div class="diary-content">
-                <p>Am Bach wasche ich die Wäsche. Das kalte Wasser beißt, aber die Abendsonne wärmt meinen Rücken. Abends gibt mir Maron Brot — ich darf es jetzt anfassen!</p>
+                <p>Der Duft von frischem Brot füllt den Raum. Ich lausche dem Knistern des Feuers und dem Murmeln der Dorfbewohner.</p>
             </div>
-            <div class="diary-gallery">
-                <img src="images/day4/at the creek washing.png" alt="Creek">
-                <img src="images/day4/washing fine nice.png" alt="Washing">
-            </div>
+            <img class="diary-img" src="images/day4/washing fine nice.png" alt="Day 4">
         </div>
         
         <!-- DAY 3 -->
         <div class="diary-card">
-            <div class="diary-date">📅 Day 3 — Windmill</div>
+            <div class="diary-date">📅 Day 3 — The Forest Listens</div>
             <div class="diary-content">
-                <p>Die Windmühle klemmt. Ich helfe sie zu reparieren — meine Hände sind jetzt rau, aber ich kann schwere Steine heben. Oben habe ich das ganze Dorf gesehen.</p>
+                <p>Der Wald spricht leise. Ich gehe den Pfad entlang und spüre, wie die alten Bäume mich beobachten.</p>
             </div>
-            <div class="diary-gallery">
-                <img src="images/day3/in the windmill.png" alt="Windmill">
-                <img src="images/day3/filling the windmillstone.jpg" alt="Stone">
-                <img src="images/day3/night moment.png" alt="Night">
-            </div>
+            <img class="diary-img" src="images/day3/night moment.png" alt="Day 3">
         </div>
         
         <!-- DAY 2 -->
         <div class="diary-card">
-            <div class="diary-date">📅 Day 2 — First Morning</div>
+            <div class="diary-date">📅 Day 2 — Flour Dust and Gratitude</div>
             <div class="diary-content">
-                <p>Mein erster Morgen in der Bäckerei! Maron zeigt mir wie man Teig knetet. Meine Arme schmerzen, aber der Duft des frischen Brotes ist alles wert.</p>
+                <p>Mein zweiter Tag in der Bäckerei. Meine Hände sind weiß vom Mehl, aber mein Herz ist leicht.</p>
             </div>
-            <div class="diary-gallery">
-                <img src="images/day2/baking at the table.png" alt="Baking">
-                <img src="images/day2/kneading dough in the bakery.png" alt="Dough">
-                <img src="images/day2/maron_gives_bread.png" alt="Bread">
-            </div>
+            <img class="diary-img" src="images/day2/baking at the table.png" alt="Day 2">
         </div>
         
         <!-- DAY 1 -->
         <div class="diary-card">
-            <div class="diary-date">📅 Day 1 — Arrival</div>
+            <div class="diary-date">📅 Day 1 — Looking Out the Tower Window</div>
             <div class="diary-content">
-                <p>Der erste Tag in Kakariko. Der Wind weht durch meinen Umhang. Ich bin müde, aber angekommen. Maron zeigt mir die Bäckerei — morgen beginne ich zu arbeiten.</p>
+                <p>Der erste Abend. Ich stehe am Fenster des Turms und schaue über das schlafende Dorf. Der Wind weht durch meinen Umhang.</p>
             </div>
-            <div class="diary-gallery">
-                <img src="images/day1/going up the way to kakariko.png" alt="Arrival">
-                <img src="images/day1/first night looking out the window.png" alt="Window">
-                <img src="images/day1/contemplating at the stones.png" alt="Stones">
-            </div>
+            <img class="diary-img" src="images/day1/first night looking out the window.png" alt="Day 1">
         </div>
     </section>
     
