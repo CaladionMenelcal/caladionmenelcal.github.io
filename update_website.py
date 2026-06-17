@@ -45,10 +45,10 @@ STORY_DAYS = [
 def get_image_for_entry(filename, context, title_de):
     """Findet passendes Bild basierend auf title_de - MANUELL"""
     
-    # MANUELLE ZUORDNUNG - which image for which story
+    # MANUELLE ZUORDNUNG - which image for which story (mit Leerzeichen!)
     manual_mapping = {
         # Tag 1: Road/Approach/Night
-        "On the Road": "images/day1/going_up_the_way_to_kakariko.png",
+        "On the Road": "images/day1/going up the way to kakariko.png",
         "Approaching Kakariko": "images/day1/arriving wind throughs cloth wrap away.png",
         "First Night": "images/day1/first_night_sitting_near_the_fire.jpg",
         # Tag 2: Bakery/Morning
