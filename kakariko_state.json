@@ -1,106 +1,115 @@
 {
-  "last_updated": "2026-06-17T09:52:31.360503",
+  "last_updated": "2026-06-17T12:00:00",
   "entries": [
     {
       "day": "Tag 1",
       "day_num": 1,
       "title_de": "On the Road",
       "title_en": "On the Road",
-      "body_de": "The trees closed around me like cathedral walls. Sunlight broke through the canopy in golden rays, catching dust motes that danced in the still air. I walked because there was nothing else to do — no map, no destination, just forward. My feet knew the way even when my mind did not. The forest breathed: moss thick as carpet, bark rough as old hands, the smell of earth and time. Somewhere, water trickled over stone. I followed the sound. The path climbed upward. I was tired, but the tiredness was ",
-      "body_en": "The trees closed around me like cathedral walls. Sunlight broke through the canopy in golden rays, catching dust motes that danced in the still air. I walked because there was nothing else to do — no map, no destination, just forward. My feet knew the way even when my mind did not. The forest breathed: moss thick as carpet, bark rough as old hands, the smell of earth and time. Somewhere, water trickled over stone. I followed the sound. The path climbed upward. I was tired, but the tiredness was ",
+      "body_de": "# On the Road Through Lost Woods\n\nThe trees closed around me like cathedral walls. Sunlight broke through the canopy in golden rays, catching dust motes that danced in the still air. I walked because there was nothing else to do — no map, no destination, just forward. My feet knew the way even when my mind did not. The forest breathed: moss thick as carpet, bark rough as old hands, the smell of earth and time. Somewhere, water trickled over stone. I followed the sound. The path climbed upward. I was tired, but the tiredness was distant, like something happening to someone else.",
+      "body_en": "# On the Road Through Lost Woods\n\nThe trees closed around me like cathedral walls. Sunlight broke through the canopy in golden rays, catching dust motes that danced in the still air. I walked because there was nothing else to do — no map, no destination, just forward. My feet knew the way even when my mind did not. The forest breathed: moss thick as carpet, bark rough as old hands, the smell of earth and time. Somewhere, water trickled over stone. I followed the sound. The path climbed upward. I was tired, but the tiredness was distant, like something happening to someone else.",
       "image": "images/day1/going up the way to kakariko.png",
-      "context": "lost woods"
+      "context": "kakariko day 1"
     },
     {
       "day": "Tag 1",
-      "day_num": 2,
+      "day_num": 1,
       "title_de": "Approaching Kakariko",
       "title_en": "Approaching Kakariko",
-      "body_de": "By midday, the forest thinned. I could see sky between the branches — pale blue, endless, mocking in its openness. The path narrowed, then split: one way led down toward a valley where smoke rose in thin threads, the other climbed higher toward bare rock and wind. I chose the valley. Somewhere down there was life — fire, food, people. My stomach growled, reminding me I was still a body, still needing things. The trees gave way to bushes, then to cultivated earth. Someone had been here. Someone w",
-      "body_en": "By midday, the forest thinned. I could see sky between the branches — pale blue, endless, mocking in its openness. The path narrowed, then split: one way led down toward a valley where smoke rose in thin threads, the other climbed higher toward bare rock and wind. I chose the valley. Somewhere down there was life — fire, food, people. My stomach growled, reminding me I was still a body, still needing things. The trees gave way to bushes, then to cultivated earth. Someone had been here. Someone w",
+      "body_de": "# Approaching Kakariko\n\nBy midday, the forest thinned. I could see sky between the branches — pale blue, endless, mocking in its openness. The path narrowed, then split: one way led down toward a valley where smoke rose in thin threads, the other climbed higher toward bare rock and wind. I chose the valley. Somewhere down there was life — fire, food, people. My stomach growled, reminding me I was still a body, still needing things. The trees gave way to bushes, then to cultivated earth. Someone had been here. Someone was still here.",
+      "body_en": "# Approaching Kakariko\n\nBy midday, the forest thinned. I could see sky between the branches — pale blue, endless, mocking in its openness. The path narrowed, then split: one way led down toward a valley where smoke rose in thin threads, the other climbed higher toward bare rock and wind. I chose the valley. Somewhere down there was life — fire, food, people. My stomach growled, reminding me I was still a body, still needing things. The trees gave way to bushes, then to cultivated earth. Someone had been here. Someone was still here.",
       "image": "images/day1/arriving wind throughs cloth wrap away.png",
-      "context": "kakariko approach"
+      "context": "kakariko day 1"
     },
     {
       "day": "Tag 1",
-      "day_num": 3,
+      "day_num": 1,
       "title_de": "First Night",
       "title_en": "First Night",
-      "body_de": "I collapsed onto a moss-covered stone at the village entrance. My legs trembled. I emptied the small stones from my boots — finally. The climb had taken everything. Through the gate, I saw the village: wooden houses climbing the hillside, smoke rising from chimneys, a windmill turning slowly on the hill. A soldier in green watched me pass but said nothing. In the square, an old man with a long white beard — Maron, I would learn — stood by a glowing bakery. He saw me. I saw the inn. He simply nod",
-      "body_en": "I collapsed onto a moss-covered stone at the village entrance. My legs trembled. I emptied the small stones from my boots — finally. The climb had taken everything. Through the gate, I saw the village: wooden houses climbing the hillside, smoke rising from chimneys, a windmill turning slowly on the hill. A soldier in green watched me pass but said nothing. In the square, an old man with a long white beard — Maron, I would learn — stood by a glowing bakery. He saw me. I saw the inn. He simply nod",
+      "body_de": "# First Night in Kakariko\n\nI collapsed onto a moss-covered stone at the village entrance. My legs trembled. I emptied the small stones from my boots — finally. The climb had taken everything. Through the gate, I saw the village: wooden houses climbing the hillside, smoke rising from chimneys, a windmill turning slowly on the hill. A soldier in green watched me pass but said nothing. In the square, an old man with a long white beard — Maron, I would learn — stood by a glowing bakery. He saw me. I saw the inn. He simply nodded. That was enough.",
+      "body_en": "# First Night in Kakariko\n\nI collapsed onto a moss-covered stone at the village entrance. My legs trembled. I emptied the small stones from my boots — finally. The climb had taken everything. Through the gate, I saw the village: wooden houses climbing the hillside, smoke rising from chimneys, a windmill turning slowly on the hill. A soldier in green watched me pass but said nothing. In the square, an old man with a long white beard — Maron, I would learn — stood by a glowing bakery. He saw me. I saw the inn. He simply nodded. That was enough.",
       "image": "images/day1/first_night_sitting_near_the_fire.jpg",
-      "context": "first night"
+      "context": "kakariko day 1"
     },
     {
       "day": "Tag 2",
-      "day_num": 4,
-      "title_de": "Awakening",
-      "title_en": "Awakening",
-      "body_de": "I woke to the smell of bread and the crackle of the fire. Morning light filtered through the small windows of The Sleeping Hyrule Inn. My legs felt better after rest. Maron was already in his bakery next door — I could hear the familiar rhythm of dough being kneaded. I want to help him today. I promised myself I would earn my stay. The girl with red braids ran past the window, barefoot as always, off to somewhere important. I wonder what her name is.",
-      "body_en": "I woke to the smell of bread and the crackle of the fire. Morning light filtered through the small windows of The Sleeping Hyrule Inn. My legs felt better after rest. Maron was already in his bakery next door — I could hear the familiar rhythm of dough being kneaded. I want to help him today. I promised myself I would earn my stay. The girl with red braids ran past the window, barefoot as always, off to somewhere important. I wonder what her name is.",
+      "day_num": 2,
+      "title_de": "First Morning",
+      "title_en": "First Morning",
+      "body_de": "# First Morning in Kakariko\n\nI woke to the smell of bread and the crackle of the fire. Morning light filtered through the small windows of The Sleeping Hyrule Inn. My legs felt better after rest. Maron was already in his bakery next door — I could hear the familiar rhythm of dough being kneaded. I want to help him today. I promised myself I would earn my stay. The girl with red braids ran past the window, barefoot as always, off to somewhere important. I wonder what her name is.",
+      "body_en": "# First Morning in Kakariko\n\nI woke to the smell of bread and the crackle of the fire. Morning light filtered through the small windows of The Sleeping Hyrule Inn. My legs felt better after rest. Maron was already in his bakery next door — I could hear the familiar rhythm of dough being kneaded. I want to help him today. I promised myself I would earn my stay. The girl with red braids ran past the window, barefoot as always, off to somewhere important. I wonder what her name is.",
       "image": "images/day2/baking at the table.png",
-      "context": "morning"
+      "context": "kakariko day 2"
     },
     {
       "day": "Tag 2",
-      "day_num": 5,
+      "day_num": 2,
       "title_de": "Bread & Braids",
       "title_en": "Bread & Braids",
-      "body_de": "At noon, I finally gathered my courage and walked into Maron's bakery. The heat from the ovens wrapped around me like a blanket. He looked up from his dough, those kind blue eyes questioningly. I gestured — may I help? He studied me for a long moment, then nodded toward a sack of flour. My hands shook as I measured, but the rhythm came naturally. Then the girl with red braids burst in, barefoot as always, demanding bread for her mother. Maron handed her a loaf without a word. She looked at me, t",
-      "body_en": "At noon, I finally gathered my courage and walked into Maron's bakery. The heat from the ovens wrapped around me like a blanket. He looked up from his dough, those kind blue eyes questioningly. I gestured — may I help? He studied me for a long moment, then nodded toward a sack of flour. My hands shook as I measured, but the rhythm came naturally. Then the girl with red braids burst in, barefoot as always, demanding bread for her mother. Maron handed her a loaf without a word. She looked at me, t",
+      "body_de": "# Bread, Braids, and a Name\n\nAt noon, I finally gathered my courage and walked into Maron's bakery. The heat from the ovens wrapped around me like a blanket. He looked up from his dough, those kind blue eyes questioningly. I gestured — may I help? He studied me for a long moment, then nodded toward a sack of flour. My hands shook as I measured, but the rhythm came naturally. Then the girl with red braids burst in, barefoot as always, demanding bread for her mother. Maron handed her a loaf without a word. She looked at me, then at the flour dust on my hands. 'New helper?' she asked. I nodded.",
+      "body_en": "# Bread, Braids, and a Name\n\nAt noon, I finally gathered my courage and walked into Maron's bakery. The heat from the ovens wrapped around me like a blanket. He looked up from his dough, those kind blue eyes questioningly. I gestured — may I help? He studied me for a long moment, then nodded toward a sack of flour. My hands shook as I measured, but the rhythm came naturally. Then the girl with red braids burst in, barefoot as always, demanding bread for her mother. Maron handed her a loaf without a word. She looked at me, then at the flour dust on my hands. 'New helper?' she asked. I nodded.",
       "image": "images/day2/maron_gives_bread.png",
-      "context": "bakery"
-    },
-    {
-      "day": "Tag 2",
-      "day_num": 6,
-      "title_de": "Flour Dust",
-      "title_en": "Flour Dust",
-      "body_de": "As the sun turned golden, I sat on the stone steps near the well, watching the light climb the houses. My hands still smelled of flour. Maron had let me stay all day — a small miracle. Lily had run back twice more, each time asking if I was 'the new helper.' I had nodded. She had smiled her gap-toothed smile each time. As evening came, Creek Grandmother's windmill turned slow and steady on the hill. I had not spoken to her yet, but I felt her eyes on me somehow. Maron handed me a small loaf — 'f",
-      "body_en": "As the sun turned golden, I sat on the stone steps near the well, watching the light climb the houses. My hands still smelled of flour. Maron had let me stay all day — a small miracle. Lily had run back twice more, each time asking if I was 'the new helper.' I had nodded. She had smiled her gap-toothed smile each time. As evening came, Creek Grandmother's windmill turned slow and steady on the hill. I had not spoken to her yet, but I felt her eyes on me somehow. Maron handed me a small loaf — 'f",
-      "image": "images/day2/sifting flour at the counter.png",
-      "context": "evening"
+      "context": "kakariko day 2"
     },
     {
       "day": "Tag 3",
-      "day_num": 7,
-      "title_de": "Flour Dust v2",
-      "title_en": "Flour Dust v2",
-      "body_de": "I woke to silence — no fire crackling yet, just the soft light of dawn through the inn's small windows. My hands still carried yesterday's flour dust, a badge of usefulness. Through the window, I saw the windmill turning slow on the hill, blades catching the first light. Creek Grandmother is up there, I thought. Today is the day. Lily ran past the window, barefoot as always, already somewhere important. I smiled. Maron was already in his bakery — I could hear the familiar rhythm of dough. Today,",
-      "body_en": "I woke to silence — no fire crackling yet, just the soft light of dawn through the inn's small windows. My hands still carried yesterday's flour dust, a badge of usefulness. Through the window, I saw the windmill turning slow on the hill, blades catching the first light. Creek Grandmother is up there, I thought. Today is the day. Lily ran past the window, barefoot as always, already somewhere important. I smiled. Maron was already in his bakery — I could hear the familiar rhythm of dough. Today,",
-      "image": "images/day3/in the windmill.png",
-      "context": "bakery"
-    },
-    {
-      "day": "Tag 3",
-      "day_num": 8,
-      "title_de": "Bakery Path",
-      "title_en": "Bakery Path",
-      "body_de": "At noon, I was elbow-deep in dough in Maron's bakery, the heat from the ovens wrapping around me like a second skin. My arms ached in a good way. Then Lily burst in, barefoot as always, gap-toothed smile first — 'My mother needs bread for midday!' Maron handed her a loaf without a word. She looked at my flour-dusted hands and grinned — 'Still helping?' I nodded. She ran off again, already somewhere. After, I wiped my hands and asked Maron about the path to the windmill. He looked up, those kind ",
-      "body_en": "At noon, I was elbow-deep in dough in Maron's bakery, the heat from the ovens wrapping around me like a second skin. My arms ached in a good way. Then Lily burst in, barefoot as always, gap-toothed smile first — 'My mother needs bread for midday!' Maron handed her a loaf without a word. She looked at my flour-dusted hands and grinned — 'Still helping?' I nodded. She ran off again, already somewhere. After, I wiped my hands and asked Maron about the path to the windmill. He looked up, those kind ",
+      "day_num": 3,
+      "title_de": "The Bakery and the Windmill Path",
+      "title_en": "The Bakery and the Windmill Path",
+      "body_de": "# Noon — The Bakery and the Windmill Path\n\nAt noon, I was elbow-deep in dough in Maron's bakery, the heat from the ovens wrapping around me like a second skin. My arms ached in a good way. Then Lily burst in, barefoot as always, gap-toothed smile first — 'My mother needs bread for midday!' Maron handed her a loaf without a word. She looked at my flour-dusted hands and grinned — 'Still helping?' I nodded. She ran off again, already somewhere. After, I wiped my hands and asked Maron about the path to the windmill. He looked up, those kind blue eyes studying me.",
+      "body_en": "# Noon — The Bakery and the Windmill Path\n\nAt noon, I was elbow-deep in dough in Maron's bakery, the heat from the ovens wrapping around me like a second skin. My arms ached in a good way. Then Lily burst in, barefoot as always, gap-toothed smile first — 'My mother needs bread for midday!' Maron handed her a loaf without a word. She looked at my flour-dusted hands and grinned — 'Still helping?' I nodded. She ran off again, already somewhere. After, I wiped my hands and asked Maron about the path to the windmill. He looked up, those kind blue eyes studying me.",
       "image": "images/day3/perfect scene in the windmill.jpeg",
-      "context": "windmill"
-    },
-    {
-      "day": "Tag 3",
-      "day_num": 9,
-      "title_de": "Dough",
-      "title_en": "Dough",
-      "body_de": "The stone staircase seemed to never end — each step carved into the rock by generations before me. My legs burned. But then, the windmill blades turned above me, close now, and I emerged onto the hillside plateau. She stood by the door — Creek Grandmother, grey hair catching the wind, eyes like the forest before the Deku Tree saw. She looked at me as if she had been waiting for centuries. 'You climbed,' she said. Not a question. She invited me inside, showed me the grinding stones, the ancient q",
-      "body_en": "The stone staircase seemed to never end — each step carved into the rock by generations before me. My legs burned. But then, the windmill blades turned above me, close now, and I emerged onto the hillside plateau. She stood by the door — Creek Grandmother, grey hair catching the wind, eyes like the forest before the Deku Tree saw. She looked at me as if she had been waiting for centuries. 'You climbed,' she said. Not a question. She invited me inside, showed me the grinding stones, the ancient q",
-      "image": "images/day3/night moment.png",
-      "context": "evening"
+      "context": "kakariko day 3"
     },
     {
       "day": "Tag 4",
-      "day_num": 10,
-      "title_de": "Fourth Morning",
-      "title_en": "Fourth Morning",
-      "body_de": "Episode nicht gefunden",
-      "body_en": "Episode nicht gefunden",
+      "day_num": 4,
+      "title_de": "Fourth Morning — The Forest Listens",
+      "title_en": "Fourth Morning — The Forest Listens",
+      "body_de": "# Fourth Morning — The Forest Listens\n\nI woke before the sun, to silence. Not empty silence — the forest was breathing. I lay still in the hay, listening. Somewhere beyond the village, beyond the windmill, the trees were whispering. Creek Grandmother's words from yesterday settled into my bones: 'The forest speaks to those who listen.' I slipped outside, barefoot now like Lily, and stood by the well. The air smelled of morning mist and bread from Maron's ovens — he was already awake. The windmill turned slow on the hill. Today, I will listen harder.",
+      "body_en": "# Fourth Morning — The Forest Listens\n\nI woke before the sun, to silence. Not empty silence — the forest was breathing. I lay still in the hay, listening. Somewhere beyond the village, beyond the windmill, the trees were whispering. Creek Grandmother's words from yesterday settled into my bones: 'The forest speaks to those who listen.' I slipped outside, barefoot now like Lily, and stood by the well. The air smelled of morning mist and bread from Maron's ovens — he was already awake. The windmill turned slow on the hill. Today, I will listen harder.",
       "image": "images/day4/at the creek washing.png",
-      "context": "morning"
+      "context": "kakariko day 4"
+    },
+    {
+      "day": "Tag 5",
+      "day_num": 5,
+      "title_de": "Laundry at the Creek",
+      "title_en": "Laundry at the Creek",
+      "body_de": "# Late Morning — Laundry at the Creek\n\nThe first thing I noticed when I got to the bakery this morning was the pile.\nNot of flour. Not of dough. Of linens — aprons, dishcloths, the long sleeves\nMaron wears when she's working the ovens. They'd been piling up in the\nback corner for three days, and this morning Maron looked at them, then\nlooked at me, and didn't say a word. She just tilted her head toward the\nback door. I understood.\n\nThe creek runs right through the edge of the village — not down some\nhill, not past the windmill.",
+      "body_en": "# Late Morning — Laundry at the Creek\n\nThe first thing I noticed when I got to the bakery this morning was the pile.\nNot of flour. Not of dough. Of linens — aprons, dishcloths, the long sleeves\nMaron wears when she's working the ovens. They'd been piling up in the\nback corner for three days, and this morning Maron looked at them, then\nlooked at me, and didn't say a word. She just tilted her head toward the\nback door. I understood.\n\nThe creek runs right through the edge of the village — not down some\nhill, not past the windmill.",
+      "image": "images/day5/finding_my_ocarina.jpeg",
+      "context": "kakariko day 5"
+    },
+    {
+      "day": "Tag 5",
+      "day_num": 5,
+      "title_de": "Fifth Morning — Bread and Belonging",
+      "title_en": "Fifth Morning — Bread and Belonging",
+      "body_de": "# Fifth Morning — Bread and Belonging\n\nI woke before the bread smell, before the rooster even. The hay was warm where I'd slept, and the windmill turned slow in the dark sky — I could hear it from here, a heartbeat in the village. I lay still. Creek Grandmother's words came back: 'The forest speaks to those who listen.' But this morning, it wasn't the forest. It was Maron, already downstairs, his hands in flour before dawn. I slipped out barefoot, the stones cold, and stood in the doorway. He didn't look up — just nodded, and I understood. I tied my hair back and took my place at the counter.",
+      "body_en": "# Fifth Morning — Bread and Belonging\n\nI woke before the bread smell, before the rooster even. The hay was warm where I'd slept, and the windmill turned slow in the dark sky — I could hear it from here, a heartbeat in the village. I lay still. Creek Grandmother's words came back: 'The forest speaks to those who listen.' But this morning, it wasn't the forest. It was Maron, already downstairs, his hands in flour before dawn. I slipped out barefoot, the stones cold, and stood in the doorway. He didn't look up — just nodded, and I understood. I tied my hair back and took my place at the counter.",
+      "image": "images/day5/in the mountains with ocarina.jpeg",
+      "context": "kakariko day 5"
+    },
+    {
+      "day": "Tag 6",
+      "day_num": 6,
+      "title_de": "Ocarina in the Mountains",
+      "title_en": "Ocarina in the Mountains",
+      "body_de": "# Afternoon — The Ocarina I Cannot Play\n\nI found it on the way up.\n\nNot lost, not hidden — just there, lying on the flat top of a stone that\nlooked like it had been waiting. Dark wood, almost black, the grain running\nvertical like veins. An ocarina. Four finger holes, one thumb hole, the shape\nof something that had once been alive.\n\nI picked it up and the weight of it surprised me. Not heavy — just present.\nLike holding a question you don't know the answer to.\n\nI sat down on the moss-covered rock beside the path and held it the way\nI'd seen in stories I don't remember learning.",
+      "body_en": "# Afternoon — The Ocarina I Cannot Play\n\nI found it on the way up.\n\nNot lost, not hidden — just there, lying on the flat top of a stone that\nlooked like it had been waiting. Dark wood, almost black, the grain running\nvertical like veins. An ocarina. Four finger holes, one thumb hole, the shape\nof something that had once been alive.\n\nI picked it up and the weight of it surprised me. Not heavy — just present.\nLike holding a question you don't know the answer to.\n\nI sat down on the moss-covered rock beside the path and held it the way\nI'd seen in stories I don't remember learning.",
+      "image": "images/day6/collection_herbs_perfect.png",
+      "context": "kakariko day 6"
+    },
+    {
+      "day": "Tag 7",
+      "day_num": 7,
+      "title_de": "Teaching Lily to Listen",
+      "title_en": "Teaching Lily to Listen",
+      "body_de": "# Teaching Lily to Listen\n\nI woke before dawn, the promise from yesterday still clear in my mind — teach Lily what Creek Grandmother taught me. The village was still sleeping as I slipped outside, but Maron's ovens already glowed. I found Lily near the well, barefoot as always, waiting. 'You actually came,' she said, surprised. I nodded. 'The forest speaks to those who listen. Let me show you.' We sat by the well as the sun rose, and I taught her to hear the silence between sounds, the windmill's rhythm, the village waking. Her eyes widened. 'I heard it,' she whispered. A new listener.",
+      "body_en": "# Teaching Lily to Listen\n\nI woke before dawn, the promise from yesterday still clear in my mind — teach Lily what Creek Grandmother taught me. The village was still sleeping as I slipped outside, but Maron's ovens already glowed. I found Lily near the well, barefoot as always, waiting. 'You actually came,' she said, surprised. I nodded. 'The forest speaks to those who listen. Let me show you.' We sat by the well as the sun rose, and I taught her to hear the silence between sounds, the windmill's rhythm, the village waking. Her eyes widened. 'I heard it,' she whispered. A new listener.",
+      "image": "images/day3/in the windmill.png",
+      "context": "kakariko day 7"
     }
-  ],
-  "total_days": 10
+  ]
 }

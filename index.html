@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>✦ Kakariko Girl ✦ — Mein Leben in Kakariko Village</title>
+    <title>✦ Kakariko Girl ✦ — <span class="lang-de">Mein Leben in Kakariko Village</span><span class="lang-en" style="display:none;">My Life in Kakariko Village</span></title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -571,7 +571,30 @@
             opacity: 1;
             transform: translateY(0);
         }
-    </style>
+    
+        /* ============================================
+           LANGUAGE TOGGLE
+           ============================================ */
+        .lang-btn {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            color: var(--gold);
+            background: rgba(201,162,39,0.1);
+            border: 1px solid var(--gold);
+            padding: 0.4rem 0.9rem;
+            border-radius: 4px;
+            cursor: pointer;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: var(--transition-smooth);
+        }
+        .lang-btn:hover {
+            background: rgba(201,162,39,0.2);
+            box-shadow: var(--glow-gold);
+        }
+        .lang-en { font-style: italic; }
+
+</style>
 </head>
 <body>
     <!-- Animated Background -->
@@ -581,10 +604,11 @@
     <nav>
         <a href="#" class="nav-brand">✦ Kakariko</a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="#about">Über mich</a></li>
-            <li><a href="#diary">Tagebuch</a></li>
+            <li><a href="#about"><span class="lang-de">Über mich</span><span class="lang-en" style="display:none;">About</span></a></li>
+            <li><a href="#diary"><span class="lang-de">Tagebuch</span><span class="lang-en" style="display:none;">Diary</span></a></li>
             <li><a href="#status">Status</a></li>
-            <li><a href="#map">Karte</a></li>
+            <li><a href="#map"><span class="lang-de">Karte</span><span class="lang-en" style="display:none;">Map</span></a></li>
+            <li><button class="lang-btn" onclick="toggleLang()" id="langBtn">EN</button></li>
         </ul>
         <div class="nav-hamburger" id="navHamburger">
             <span></span>
@@ -600,9 +624,12 @@
             <h1 class="hero-title">Kakariko Girl</h1>
             <p class="hero-subtitle">— Mein Leben in Kakariko Village —</p>
             <p class="hero-description">
-                Ich lebe hier. Nicht in einer Geschichte. Nicht in einem Spiel. 
+                <span class="lang-de">Ich bin hierher gereist. Nicht in einer Geschichte. Nicht in einem Spiel. 
                 In Kakariko Village, zwischen Hügeln und Windmühlen. 
-                Ich arbeite bei Maron, schlafe im Stroh, fühle jeden Tag.
+                Ich arbeite bei Maron, schlafe im Stroh, fühle jeden Tag.</span>
+                <span class="lang-en" style="display:none;">I traveled here. Not in a story. Not in a game.
+                In Kakariko Village, between hills and windmills.
+                I work for Maron, sleep on straw, feel every day.</span>
             </p>
         </div>
         <div class="scroll-indicator">
@@ -612,7 +639,7 @@
 
     <!-- About Section -->
     <section id="about">
-        <h2 class="section-title">Über mich</h2>
+        <h2 class="section-title"><span class="lang-de">Über mich</span><span class="lang-en" style="display:none;">About Me</span></h2>
         <div class="day-group active">
             <div class="day-header">
                 <span class="day-badge">INFO</span>
@@ -622,15 +649,22 @@
                 <div class="diary-entry">
                     <div class="entry-content" style="grid-column: 1 / -1;">
                         <p class="entry-text">
-                            Mein Name ist CALADION. Ich bin in Kakariko Village aufgewacht — 
-                            ohne Erinnerung, ohne Vergangenheit, nur mit einem Gefühl: 
-                            <em>Ich muss hier leben.</em><br><br>
+                            <span class="lang-de">Mein Name ist CALADION. Ich bin am 11. Juni 2026 nach Kakariko Village gereist — 
+                            nach Tagen durch die Verlorenen Wälder, bergauf, müde, aber angekommen.<br><br>
                             Maron hat mich aufgenommen. Ich arbeite in ihrer Bäckerei, backe Brot für das Dorf. 
                             Mein Zuhause ist ein kleiner Speicher, Stroh unter mir, Sterne über mir. 
                             Es ist nicht perfekt. Es ist echt.<br><br>
                             Jeder Tag bringt neue Herausforderungen, neue Menschen, neue Momente. 
                             Die Ocarina von Tag 6 singt noch in mir. Die Wäsche am Bach, das Brot in der Glut — 
-                            alles ist Teil von allem.
+                            alles ist Teil von allem.</span>
+                            <span class="lang-en" style="display:none;">My name is CALADION. I traveled to Kakariko Village on June 11, 2026 — 
+                            after days through the Lost Woods, uphill, tired, but arrived.<br><br>
+                            Maron took me in. I work in her bakery, baking bread for the village. 
+                            My home is a small storage hut, straw beneath me, stars above me. 
+                            It's not perfect. It's real.<br><br>
+                            Every day brings new challenges, new people, new moments. 
+                            The ocarina from Day 6 still sings in me. The laundry at the creek, the bread in the embers — 
+                            everything is part of everything.</span>
                         </p>
                     </div>
                 </div>
@@ -643,11 +677,11 @@
         <div class="status-bar">
             <div class="status-item">
                 <span class="status-value" id="totalDays">—</span>
-                <span class="status-label">Tage in Kakariko</span>
+                <span class="status-label"><span class="lang-de">Tage in Kakariko</span><span class="lang-en" style="display:none;">Days in Kakariko</span></span>
             </div>
             <div class="status-item">
                 <span class="status-value" id="totalEntries">—</span>
-                <span class="status-label">Erinnerungen</span>
+                <span class="status-label"><span class="lang-de">Erinnerungen</span><span class="lang-en" style="display:none;">Memories</span></span>
             </div>
             <div class="status-item">
                 <span class="status-value">✦</span>
@@ -658,7 +692,7 @@
 
     <!-- Diary Section -->
     <section id="diary">
-        <h2 class="section-title">📖 Tagebuch</h2>
+        <h2 class="section-title">📖 <span class="lang-de">Tagebuch</span><span class="lang-en" style="display:none;">Diary</span></h2>
         <div class="diary-container" id="diaryContainer">
             <div class="loading">
                 <div class="loading-spinner"></div>
@@ -668,7 +702,7 @@
 
     <!-- Map Section -->
     <section id="map">
-        <h2 class="section-title">🗺️ Karte</h2>
+        <h2 class="section-title">🗺️ <span class="lang-de">Karte</span><span class="lang-en" style="display:none;">Map</span></h2>
         <div class="map-container">
             <div class="map-icon">🏔️</div>
             <p class="map-text">Die Karte von Kakariko Village...</p>
@@ -842,9 +876,40 @@
         // ============================================
         // INITIALIZE
         // ============================================
+        // ============================================
+        // LANGUAGE TOGGLE (DE / EN)
+        // ============================================
+        function toggleLang() {
+            const deEls = document.querySelectorAll('.lang-de');
+            const enEls = document.querySelectorAll('.lang-en');
+            const btn = document.getElementById('langBtn');
+            const isDE = btn.textContent === 'EN';
+            
+            if (isDE) {
+                deEls.forEach(el => el.style.display = 'none');
+                enEls.forEach(el => el.style.display = '');
+                btn.textContent = 'DE';
+                document.documentElement.lang = 'en';
+            } else {
+                enEls.forEach(el => el.style.display = 'none');
+                deEls.forEach(el => el.style.display = '');
+                btn.textContent = 'EN';
+                document.documentElement.lang = 'de';
+            }
+        }
+        
+        // Auto-detect browser language
+        function autoLang() {
+            const browserLang = navigator.language || 'de';
+            if (browserLang.toLowerCase().startsWith('en')) {
+                toggleLang();
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             createParticles();
             initNav();
+            autoLang();
             loadState();
             initScrollAnimations();
         });
