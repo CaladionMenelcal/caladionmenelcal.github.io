@@ -43,49 +43,42 @@ STORY_DAYS = [
 ]
 
 def get_image_for_entry(filename, context):
-    """Findet passendes Bild basierend auf Dateiname und Kontext"""
-    import re
+    """Findet passendes Bild basierend auf Dateiname und Kontext - MANUELL"""
     
-    # Kontext-Mapping: which images match which story
-    context_keywords = {
-        "road": ["path", "walking", "way", "road"],
-        "night": ["night", "window", "fire", "evening"],
-        "bakery": ["bakery", "bread", "baking", "flour", "dough", "maron"],
-        "windmill": ["windmill", "mill"],
-        "creek": ["creek", "laundry", "washing", " creek"],
-        "mountain": ["mountain", "ocarina", "herb"],
+    # MANUELLE ZUORDNUNG - which image for which story
+    manual_mapping = {
+        # Tag 1: Road/Approach/Night
+        "On the Road": "images/day1/going_up_the_way_to_kakariko.png",
+        "Approaching Kakariko": "images/day1/arriving wind throughs cloth wrap away.png",
+        "First Night": "images/day1/first_night_sitting_near_the_fire.jpg",
+        # Tag 2: Bakery/Morning
+        "Awakening": "images/day2/baking at the table.png",
+        "Bread & Braids": "images/day2/maron_gives_bread.png",
+        "Flour Dust": "images/day2/sifting flour at the counter.png",
+        # Tag 3: Windmill
+        "Flour Dust v2": "images/day3/in the windmill.png",
+        "Bakery Path": "images/day3/perfect scene in the windmill.jpeg",
+        "Dough": "images/day3/night moment.png",
+        # Tag 4
+        "Fourth Morning": "images/day4/at the creek washing.png",
+        # Tag 5
+        "Bread & Belonging": "images/day5/finding_my_ocarina.jpeg",
+        "Laundry": "images/day4/at the creek washing.png",
+        # Tag 6
+        "Listening": "images/day5/in the mountains with ocarina.jpeg",
+        "Ocarina": "images/day5/in the mountains with ocarina.jpeg",
+        # Tag 7
+        "Teaching Lily": "images/day6/balancing.png",
+        "Windmill": "images/day3/perfect scene in the windmill.jpeg",
+        "Wisdom": "images/day6/kellerfenster.png",
     }
     
-    # Scan all image folders for best match
-    best_match = None
-    best_score = 0
+    for title, img_path in manual_mapping.items():
+        if title in filename or title in context:
+            return img_path
     
-    for day_folder in IMAGES_DIR.glob("day*"):
-        if not day_folder.is_dir():
-            continue
-        for img in day_folder.glob("*.*"):
-            if img.suffix.lower() in [".png", ".jpg", ".jpeg", ".webp"]:
-                img_name = img.stem.lower()
-                score = 0
-                for kw_list in context_keywords.values():
-                    for kw in kw_list:
-                        if kw in img_name or kw in context.lower():
-                            score += 1
-                if score > best_score:
-                    best_score = score
-                    best_match = f"images/{day_folder.name}/{img.name}"
-    
-    # Fallback: first available image
-    if not best_match:
-        for day_folder in sorted(IMAGES_DIR.glob("day*")):
-            if not day_folder.is_dir():
-                continue
-            images = list(day_folder.glob("*.*"))
-            if images:
-                best_match = f"images/{day_folder.name}/{images[0].name}"
-                break
-    
-    return best_match
+    # Fallback
+    return "images/day1/going_up_the_way_to_kakariko.png"
 
 def read_episode(filename):
     """Liest eine Obsidian-Episode und extrahiert Text"""
