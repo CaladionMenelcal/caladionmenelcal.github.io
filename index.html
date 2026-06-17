@@ -37,7 +37,7 @@
             overflow-x: hidden;
         }
 
-        /* VILLAGE BACKGROUND - stays fixed */
+        /* VILLAGE BACKGROUND - stays fixed with multiple layers */
         .village-bg {
             position: fixed;
             top: 0;
@@ -46,18 +46,22 @@
             height: 100%;
             z-index: -1;
             background: 
-                linear-gradient(180deg, rgba(13,13,13,0.7) 0%, rgba(26,24,21,0.85) 50%, rgba(13,13,13,0.95) 100%),
+                linear-gradient(180deg, rgba(13,13,13,0.6) 0%, rgba(26,24,21,0.75) 40%, rgba(13,13,13,0.9) 100%),
+                url('https://images.unsplash.com/photo-1448375240586-dfd8d3793306?w=1920') center/cover,
                 url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1920') center/cover;
+            background-blend-mode: overlay, multiply;
         }
 
-        /* SECOND LAYER - village silhouette */
-        .village-bg::after {
+        /* Second layer - village silhouette */
+        .village-bg::before {
             content: '';
             position: absolute;
             inset: 0;
             background: 
-                radial-gradient(ellipse at 30% 80%, rgba(61,107,79,0.15) 0%, transparent 40%),
-                radial-gradient(ellipse at 70% 90%, rgba(201,162,39,0.08) 0%, transparent 35%);
+                radial-gradient(ellipse at 20% 70%, rgba(61,107,79,0.2) 0%, transparent 35%),
+                radial-gradient(ellipse at 80% 80%, rgba(201,162,39,0.12) 0%, transparent 30%),
+                radial-gradient(ellipse at 50% 95%, rgba(74,56,40,0.25) 0%, transparent 40%);
+            pointer-events: none;
         }
 
         /* TITLE - Zelda Gold */
