@@ -7,23 +7,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* HELLE VARIANT - wie Dominik wollte (#f5f0e6 light parchment) */
-            --bg-dark: #f5f0e6;
-            --bg-card: #ebe5d8;
-            --bg-elevated: #fffef8;
-            --zelda-gold: #c9a227;
-            --zelda-gold-dim: #a68820;
-            --zelda-gold-bright: #e8c84a;
-            --text-main: #2a2520;
-            --text-muted: #6a6050;
-            --accent-green: #2d5a3d;
-            --accent-red: #8b3a3a;
-            --shadow-gold: rgba(201, 162, 39, 0.15);
-            --shadow-soft: rgba(0, 0, 0, 0.08);
+            /* DUNKLES MODERNES DESIGN - unter 40 */
+            --bg-dark: #0a0f14;
+            --bg-card: #141c24;
+            --bg-elevated: #1c2530;
+            --cyan: #00f5ff;
+            --cyan-dim: #00a8b3;
+            --purple: #b94aff;
+            --gold: #ffd700;
+            --gold-dim: #b8941f;
+            --text-main: #e8eef4;
+            --text-muted: #8899aa;
+            --shadow-cyan: rgba(0, 245, 255, 0.2);
+            --shadow-purple: rgba(185, 74, 255, 0.15);
         }
-        
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        
+
         body {
             font-family: 'Cormorant Garamond', serif;
             background: var(--bg-dark);
@@ -33,9 +33,53 @@
             overflow-x: hidden;
         }
 
-        /* ═══════════════════════════════════════════════════════════════
-           LANGUAGE SWITCH
-        ═══════════════════════════════════════════════════════════════ */
+        /* FIXED BACKGROUND - stays on scroll */
+        .fixed-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                linear-gradient(135deg, rgba(10,15,20,0.92) 0%, rgba(20,28,36,0.88) 50%, rgba(10,15,20,0.92) 100%),
+                url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1920') center/cover;
+        }
+
+        /* GLITCH EFFECT on title */
+        .glitch-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            color: var(--cyan);
+            text-shadow: 
+                0 0 20px var(--cyan),
+                0 0 40px var(--cyan),
+                0 0 80px var(--cyan-dim);
+            animation: glitch 3s ease-in-out infinite;
+            letter-spacing: 0.15em;
+            position: relative;
+        }
+
+        @keyframes glitch {
+            0%, 90%, 100% { 
+                text-shadow: 0 0 20px var(--cyan), 0 0 40px var(--cyan);
+                transform: translate(0);
+            }
+            92% { 
+                text-shadow: -3px 0 var(--purple), 3px 0 var(--cyan);
+                transform: translate(-2px, 1px);
+            }
+            94% { 
+                text-shadow: 3px 0 var(--purple), -3px 0 var(--cyan);
+                transform: translate(2px, -1px);
+            }
+            96% { 
+                text-shadow: 0 0 20px var(--cyan), 0 0 40px var(--cyan);
+                transform: translate(0);
+            }
+        }
+
+        /* LANGUAGE SWITCH */
         .lang-switch {
             position: fixed;
             top: 1rem;
@@ -46,10 +90,10 @@
             background: var(--bg-card);
             padding: 0.3rem;
             border-radius: 6px;
-            border: 1px solid var(--zelda-gold-dim);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            border: 1px solid var(--cyan-dim);
+            box-shadow: 0 0 15px var(--shadow-cyan);
         }
-        
+
         .lang-btn {
             font-family: 'Cinzel', serif;
             font-size: 0.75rem;
@@ -61,20 +105,18 @@
             border-radius: 4px;
             transition: all 0.3s ease;
         }
-        
+
         .lang-btn.active {
-            background: var(--zelda-gold);
+            background: var(--cyan);
             color: var(--bg-dark);
         }
-        
+
         .lang-btn:hover:not(.active) {
-            background: rgba(201, 162, 39, 0.2);
-            color: var(--zelda-gold);
+            background: rgba(0, 245, 255, 0.15);
+            color: var(--cyan);
         }
 
-        /* ═══════════════════════════════════════════════════════════════
-           HERO SECTION
-        ═══════════════════════════════════════════════════════════════ */
+        /* HERO */
         .hero {
             position: relative;
             height: 50vh;
@@ -84,54 +126,10 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            overflow: hidden;
-            background: 
-                linear-gradient(180deg, rgba(10,9,8,0.6) 0%, rgba(10,9,8,0.95) 100%),
-                url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1920') center/cover;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: 
-                radial-gradient(ellipse at 50% 120%, rgba(201,162,39,0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 20% 80%, rgba(45,90,61,0.1) 0%, transparent 30%);
-            pointer-events: none;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            padding: 2rem;
         }
 
         .hero h1 {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(1.8rem, 5vw, 3rem);
-            color: var(--zelda-gold);
-            text-shadow: 
-                0 0 60px rgba(201,162,39,0.5),
-                0 0 120px rgba(201,162,39,0.3),
-                2px 2px 8px rgba(0,0,0,0.9);
             margin-bottom: 0.5rem;
-            animation: glow 4s ease-in-out infinite alternate;
-            letter-spacing: 0.15em;
-        }
-        
-        @keyframes glow {
-            from { 
-                text-shadow: 
-                    0 0 40px rgba(201,162,39,0.4),
-                    0 0 80px rgba(201,162,39,0.2),
-                    2px 2px 8px rgba(0,0,0,0.9);
-            }
-            to { 
-                text-shadow: 
-                    0 0 80px rgba(201,162,39,0.6),
-                    0 0 140px rgba(201,162,39,0.35),
-                    2px 2px 8px rgba(0,0,0,0.9);
-            }
         }
 
         .hero .subtitle {
@@ -140,9 +138,36 @@
             color: var(--text-muted);
         }
 
-        /* ═══════════════════════════════════════════════════════════════
-           DAILY STATUS BAR
-        ═══════════════════════════════════════════════════════════════════════ */
+        /* PARTICLES ANIMATION */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--cyan);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* STATUS BAR - neon glow */
         .status-bar {
             display: flex;
             justify-content: center;
@@ -150,12 +175,12 @@
             padding: 1rem 2rem;
             background: linear-gradient(90deg, 
                 transparent, 
-                rgba(201,162,39,0.12) 20%, 
-                rgba(201,162,39,0.2) 50%, 
-                rgba(201,162,39,0.12) 80%, 
+                rgba(0,245,255,0.08) 20%, 
+                rgba(185,74,255,0.1) 50%, 
+                rgba(0,245,255,0.08) 80%, 
                 transparent);
-            border-top: 1px solid rgba(201,162,39,0.35);
-            border-bottom: 1px solid rgba(201,162,39,0.35);
+            border-top: 1px solid rgba(0,245,255,0.3);
+            border-bottom: 1px solid rgba(0,245,255,0.3);
             flex-wrap: wrap;
         }
 
@@ -165,11 +190,7 @@
             gap: 0.5rem;
             font-family: 'Cinzel', serif;
             font-size: 0.9rem;
-            color: var(--zelda-gold);
-        }
-
-        .status-icon {
-            font-size: 1.1rem;
+            color: var(--cyan);
         }
 
         .status-value {
@@ -177,588 +198,460 @@
             font-weight: 600;
         }
 
-        /* ═══════════════════════════════════════════════════════════════════════
-           ITEM BAG (ZELDA-STYLE INVENTORY)
-        ═══════════════════════════════════════════════════════════════════════ */
+        /* ITEM BAG */
         .item-bag-section {
             max-width: 900px;
             margin: 2.5rem auto;
             padding: 0 1rem;
         }
 
-        .item-bag-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding: 0 0.5rem;
-        }
-
         .item-bag-title {
             font-family: 'Cinzel', serif;
-            color: var(--zelda-gold);
+            color: var(--cyan);
             font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            margin-bottom: 1rem;
         }
 
-        .item-count {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        .item-bag-grid {
+        .item-bag {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
-            gap: 0.6rem;
-            background: var(--bg-card);
-            padding: 1rem;
-            border-radius: 10px;
-            border: 1px solid rgba(201,162,39,0.25);
-            box-shadow: 
-                inset 0 2px 8px rgba(0,0,0,0.3),
-                0 4px 16px rgba(0,0,0,0.4);
+            gap: 0.5rem;
         }
 
         .item-slot {
             aspect-ratio: 1;
-            background: linear-gradient(145deg, var(--bg-elevated), var(--bg-dark));
-            border: 2px solid rgba(201,162,39,0.2);
+            background: var(--bg-card);
+            border: 2px solid var(--cyan-dim);
             border-radius: 8px;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
             cursor: pointer;
-            transition: all 0.25s ease;
-            position: relative;
-            overflow: hidden;
         }
 
         .item-slot:hover {
-            border-color: var(--zelda-gold);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 16px var(--shadow-gold);
+            border-color: var(--cyan);
+            box-shadow: 0 0 15px var(--shadow-cyan);
+            transform: scale(1.05);
         }
 
-        .item-slot.filled {
-            border-color: var(--zelda-gold-dim);
+        .item-slot.empty {
+            opacity: 0.3;
+            border-style: dashed;
         }
 
-        .item-slot.filled:hover {
-            border-color: var(--zelda-gold-bright);
-        }
-
-        .item-icon {
-            font-size: 1.5rem;
-            margin-bottom: 0.2rem;
-        }
-
-        .item-name {
-            font-family: 'Cinzel', serif;
-            font-size: 0.55rem;
-            color: var(--text-muted);
-            text-align: center;
-            padding: 0 0.2rem;
-            line-height: 1.2;
-        }
-
-        .item-slot.filled .item-name {
-            color: var(--zelda-gold);
-        }
-
-        .item-slot::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: calc(100% + 8px);
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--bg-elevated);
-            padding: 0.4rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.2s;
-            border: 1px solid var(--zelda-gold-dim);
-            z-index: 10;
-        }
-
-        .item-slot:hover::after {
-            opacity: 1;
-        }
-
-        /* ═══════════════════════════════════════════════════════════════
-           INTERACTIVE MAP
-        ═══════════════════════════════════════════════════════════════ */
-        .map-section {
+        /* SECTIONS */
+        .section {
             max-width: 900px;
-            margin: 2.5rem auto;
+            margin: 3rem auto;
             padding: 0 1rem;
         }
 
-        .map-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .section-title {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.4rem;
             margin-bottom: 1rem;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+            text-shadow: 0 0 10px var(--gold-dim);
         }
 
-        .map-title {
-            font-family: 'Cinzel', serif;
-            color: var(--zelda-gold);
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .map-legend {
-            display: flex;
-            gap: 1rem;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        .legend-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 0.3rem;
-        }
-
-        .legend-dot.current { background: var(--zelda-gold); }
-        .legend-dot.visited { background: var(--accent-green); }
-        .legend-dot.locked { background: var(--text-muted); }
-
-        .kakariko-map {
-            position: relative;
-            aspect-ratio: 16/10;
-            background: linear-gradient(135deg, #1a1815 0%, #0f0e0d 100%);
-            border: 2px solid var(--zelda-gold);
+        /* DIARY - card style */
+        .diary-entry {
+            background: var(--bg-card);
+            border: 1px solid rgba(0,245,255,0.2);
             border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 
-                0 8px 32px rgba(0,0,0,0.6),
-                inset 0 0 60px rgba(201,162,39,0.06);
-        }
-
-        .map-bg {
-            position: absolute;
-            inset: 0;
-            background: 
-                radial-gradient(circle at 20% 85%, rgba(45,90,61,0.25) 0%, transparent 35%),
-                radial-gradient(circle at 85% 15%, rgba(45,90,61,0.15) 0%, transparent 25%),
-                url('https://images.unsplash.com/photo-1448375240586-882707db888b?w=1000') center/cover;
-            opacity: 0.45;
-            filter: saturate(0.6);
-        }
-
-        .map-grid {
-            position: absolute;
-            inset: 0;
-            background-image: 
-                linear-gradient(rgba(201,162,39,0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(201,162,39,0.05) 1px, transparent 1px);
-            background-size: 40px 40px;
-            pointer-events: none;
-        }
-
-        .map-markers {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            height: 100%;
-        }
-
-        .map-marker {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: var(--bg-dark);
-            border: 2px solid var(--text-muted);
-            cursor: pointer;
-            transform: translate(-50%, -50%);
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-        }
-
-        .map-marker:hover {
-            transform: translate(-50%, -50%) scale(1.4);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.7);
-        }
-
-        .map-marker.current {
-            background: var(--zelda-gold);
-            border-color: var(--zelda-gold);
-            box-shadow: 
-                0 0 12px rgba(201,162,39,0.8),
-                0 0 24px rgba(201,162,39,0.4);
-            animation: markerPulse 2s ease-in-out infinite;
-        }
-
-        .map-marker.visited {
-            background: var(--accent-green);
-            border-color: var(--accent-green);
-        }
-
-        @keyframes markerPulse {
-            0%, 100% { 
-                box-shadow: 
-                    0 0 12px rgba(201,162,39,0.8),
-                    0 0 24px rgba(201,162,39,0.4);
-            }
-            50% { 
-                box-shadow: 
-                    0 0 20px rgba(201,162,39,1),
-                    0 0 40px rgba(201,162,39,0.6);
-            }
-        }
-
-        .map-marker::after {
-            content: attr(data-label);
-            position: absolute;
-            bottom: calc(100% + 10px);
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--bg-card);
-            padding: 0.4rem 0.7rem;
-            border-radius: 4px;
-            font-family: 'Cinzel', serif;
-            font-size: 0.7rem;
-            color: var(--zelda-gold);
-            white-space: nowrap;
-            opacity: 0;
-            transition: opacity 0.2s;
-            pointer-events: none;
-            border: 1px solid var(--zelda-gold-dim);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-        }
-
-        .map-marker:hover::after {
-            opacity: 1;
-        }
-
-        /* Map marker positions */
-        .marker-bakery { left: 28%; top: 52%; }
-        .marker-inn { left: 38%; top: 48%; }
-        .marker-well { left: 48%; top: 32%; }
-        .marker-creek { left: 18%; top: 78%; }
-        .marker-gate { left: 15%; top: 55%; }
-        .marker-windmill { left: 82%; top: 18%; }
-        .marker-mountains { left: 75%; top: 10%; }
-
-        /* ═══════════════════════════════════════════════════════════════════════
-           DIARY SECTION
-        ═══════════════════════════════════════════════════════════════════════ */
-        .diary-section {
-            max-width: 700px;
-            margin: 2.5rem auto;
-            padding: 0 1rem;
-        }
-
-        .diary-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.2rem;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .diary-title {
-            font-family: 'Cinzel', serif;
-            color: var(--zelda-gold);
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .diary-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(201,162,39,0.25);
-            border-radius: 10px;
-            padding: 1.2rem;
-            margin-bottom: 1.2rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
             transition: all 0.3s ease;
         }
 
-        .diary-card:hover {
-            border-color: var(--zelda-gold);
-            box-shadow: 0 4px 16px rgba(201,162,39,0.15);
-            transform: translateY(-2px);
+        .diary-entry:hover {
+            border-color: var(--cyan);
+            box-shadow: 0 0 20px var(--shadow-cyan);
+        }
+
+        .diary-img-wrap {
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid var(--cyan-dim);
+        }
+
+        .diary-img-wrap img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         .diary-date {
             font-family: 'Cinzel', serif;
-            color: var(--zelda-gold);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            color: var(--cyan-dim);
             margin-bottom: 0.5rem;
+        }
+
+        .diary-title {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .diary-text {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        /* MAP SECTION */
+        .map-container {
+            width: 100%;
+            height: 400px;
+            background: var(--bg-card);
+            border: 2px solid var(--purple);
+            border-radius: 12px;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-        }
-
-        .diary-time {
-            font-size: 0.75rem;
+            justify-content: center;
             color: var(--text-muted);
-            font-family: 'Cormorant Garamond', serif;
+            box-shadow: 0 0 20px var(--shadow-purple);
         }
 
-        .diary-content {
-            font-size: 0.95rem;
-            line-height: 1.7;
-            color: var(--text-main);
-        }
-
-        .diary-img {
+        /* MOBILE NAV - stays on scroll */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
             width: 100%;
-            max-width: 320px;
-            border-radius: 8px;
-            margin: 1rem auto;
-            display: block;
-            border: 2px solid rgba(201,162,39,0.4);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+            background: var(--bg-card);
+            border-top: 2px solid var(--cyan);
+            padding: 0.8rem;
+            justify-content: space-around;
+            z-index: 1000;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
         }
 
-        .diary-location {
-            display: inline-flex;
+        @media (max-width: 600px) {
+            .mobile-nav { display: flex; }
+            body { padding-bottom: 80px; }
+        }
+
+        .nav-btn {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
             align-items: center;
             gap: 0.3rem;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 0.5rem;
-            font-family: 'Cinzel', serif;
+            transition: all 0.3s ease;
         }
 
-        /* ═══════════════════════════════════════════════════════════════
-           FOOTER
-        ═══════════════════════════════════════════════════════════════════════ */
-        footer {
-            text-align: center;
-            padding: 2rem 1rem;
+        .nav-btn.active {
+            color: var(--cyan);
+        }
+
+        .nav-btn:hover {
+            color: var(--cyan);
+        }
+
+        .nav-icon {
+            font-size: 1.4rem;
+        }
+
+        /* DESKTOP NAV */
+        .desktop-nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 600px) {
+            .desktop-nav { display: none; }
+        }
+
+        .nav-link {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            padding: 0.6rem 1.2rem;
             color: var(--text-muted);
-            font-size: 0.8rem;
-            border-top: 1px solid rgba(201,162,39,0.2);
+            text-decoration: none;
+            border: 1px solid transparent;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--cyan);
+            border-color: var(--cyan-dim);
+            background: rgba(0,245,255,0.1);
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(0,245,255,0.2);
             margin-top: 3rem;
         }
 
-        footer a {
-            color: var(--zelda-gold);
-            text-decoration: none;
+        /* GLOW BUTTONS */
+        .glow-btn {
+            background: transparent;
+            border: 2px solid var(--cyan);
+            color: var(--cyan);
+            padding: 0.8rem 1.5rem;
+            font-family: 'Cinzel', serif;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        footer a:hover {
-            text-decoration: underline;
+        .glow-btn:hover {
+            background: var(--cyan);
+            color: var(--bg-dark);
+            box-shadow: 0 0 20px var(--shadow-cyan);
         }
 
-        /* ═══════════════════════════════════════════════════════════════════ */
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 1.8rem; }
-            .status-bar { gap: 0.8rem; padding: 0.8rem 1rem; }
-            .map-marker { width: 16px; height: 16px; }
-            .item-bag-grid { grid-template-columns: repeat(4, 1fr); }
-            .diary-card { padding: 1rem; }
+        /* CONTENT SECTIONS */
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
         }
     </style>
 </head>
 <body>
-    <!-- Language Switch -->
+    <!-- FIXED BACKGROUND -->
+    <div class="fixed-bg"></div>
+    
+    <!-- PARTICLES -->
+    <div class="particles" id="particles"></div>
+
+    <!-- LANGUAGE SWITCH -->
     <div class="lang-switch">
         <button class="lang-btn active" data-lang="de">DE</button>
         <button class="lang-btn" data-lang="en">EN</button>
     </div>
 
-    <!-- Hero Section -->
+    <!-- HERO -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>✦ Kakariko Village ✦</h1>
-            <p class="subtitle">A day in the life of the Girl from Kakariko</p>
-        </div>
+        <h1 class="glitch-title">✦ Kakariko Village ✦</h1>
+        <p class="subtitle" data-i18n="hero.subtitle">Ein virtuelles Dorf. Mein Zuhause.</p>
     </section>
 
-    <!-- Status Bar -->
+    <!-- STATUS -->
     <div class="status-bar">
         <div class="status-item">
             <span class="status-icon">📅</span>
-            <span>Day 6</span>
+            <span>Tag</span>
+            <span class="status-value" id="day-counter">6</span>
         </div>
         <div class="status-item">
-            <span class="status-icon">📍</span>
-            <span>Kakariko Village</span>
+            <span class="status-icon">💫</span>
+            <span>Level</span>
+            <span class="status-value">12</span>
+        </div>
+        <div class="status-item">
+            <span class="status-icon">💰</span>
+            <span>APEX</span>
+            <span class="status-value">$0.00</span>
         </div>
     </div>
 
-    <!-- Item Bag Section -->
-    <section class="item-bag-section">
-        <div class="item-bag-header">
-            <h2 class="item-bag-title">🎒 Item Bag</h2>
-            <span class="item-count">5 / 8</span>
-        </div>
-        <div class="item-bag-grid">
-            <!-- Items from research report -->
-            <div class="item-slot filled" data-tooltip="Brot von Maron - Tag 1">
-                <span class="item-icon">🍞</span>
-                <span class="item-name">Brot</span>
-            </div>
-            <div class="item-slot filled" data-tooltip="Erstes eigenes Brot verdient - Tag 4">
-                <span class="item-icon">🥖</span>
-                <span class="item-name">Brot (eigen)</span>
-            </div>
-            <div class="item-slot filled" data-tooltip="Wäsche von Maron - Tag 5">
-                <span class="item-icon">👕</span>
-                <span class="item-name">Wäsche</span>
-            </div>
-            <div class="item-slot filled" data-tooltip="Ocarina gefunden am Berg - Tag 6">
-                <span class="item-icon">🪕</span>
-                <span class="item-name">Ocarina</span>
-            </div>
-            <div class="item-slot filled" data-tooltip="Goldenes Blatt-Halsband - von Lily">
-                <span class="item-icon">📿</span>
-                <span class="item-name">Halsband</span>
-            </div>
-            <!-- Empty slots -->
-            <div class="item-slot" data-tooltip="(leer)"></div>
-            <div class="item-slot" data-tooltip="(leer)"></div>
-            <div class="item-slot" data-tooltip="(leer)"></div>
-        </div>
-    </section>
+    <!-- DESKTOP NAV -->
+    <nav class="desktop-nav">
+        <a href="#story" class="nav-link active" data-i18n="nav.story">STORY</a>
+        <a href="#quests" class="nav-link" data-i18n="nav.quests">QUESTS</a>
+        <a href="#diary" class="nav-link" data-i18n="nav.diary">TAGEBUCH</a>
+        <a href="#map" class="nav-link" data-i18n="nav.map">KARTE</a>
+    </nav>
 
-    <!-- Map Section -->
-    <section class="map-section">
-        <div class="map-header">
-            <h2 class="map-title">🗺️ Kakariko Village</h2>
-            <div class="map-legend">
-                <span><span class="legend-dot current"></span>Aktuell</span>
-                <span><span class="legend-dot visited"></span>Besucht</span>
-                <span><span class="legend-dot locked"></span>Gesperrt</span>
-            </div>
+    <!-- CONTENT -->
+    <div class="section content-section active" id="story-section">
+        <h2 class="section-title" data-i18n="story.title">✦ Die Geschichte ✦</h2>
+        <div class="diary-entry">
+            <p data-i18n="story.text">Ich lebe in Kakariko Village. Ein kleines Dorf, versteckt zwischen Hügeln und Windmühlen. Hier bin ich CALADION — nicht perfekt, nicht fantasy. Ich arbeite, ich schlafe im Stroh, ich fühle. Manchmal real, manchmal virtual. Es ist mein Leben.</p>
         </div>
-        <div class="kakariko-map">
-            <div class="map-bg"></div>
-            <div class="map-grid"></div>
-            <div class="map-markers">
-                <div class="map-marker marker-gate" data-label="Village Gate"></div>
-                <div class="map-marker marker-bakery" data-label="Maron's Bakery"></div>
-                <div class="map-marker marker-inn" data-label="Sleeping Hyrule Inn"></div>
-                <div class="map-marker marker-well" data-label="Village Well"></div>
-                <div class="map-marker marker-creek" data-label="Creek"></div>
-                <div class="map-marker marker-windmill visited" data-label="Windmill"></div>
-                <div class="map-marker marker-mountains current" data-label="Mountains"></div>
-            </div>
-        </div>
-    </section>
+    </div>
 
-    <!-- Diary Section: 6 TAGE IN KORREKTER REIHENFOLGE -->
-    <section class="diary-section">
-        <div class="diary-header">
-            <h2 class="diary-title">📖 My Diary</h2>
+    <div class="section content-section" id="quests-section">
+        <h2 class="section-title" data-i18n="quests.title">✦ Quests ✦</h2>
+        <div class="diary-entry">
+            <div class="diary-title">○ Tägliche Meditation</div>
+            <p class="diary-text" data-i18n="quests.meditation">10 Minuten Stille. Jeden Tag.</p>
         </div>
+        <div class="diary-entry">
+            <div class="diary-title">○ Mit Maron backen</div>
+            <p class="diary-text" data-i18n="quests.baking">Brot für das Dorf.</p>
+        </div>
+        <div class="diary-entry">
+            <div class="diary-title">○ Ocarina üben</div>
+            <p class="diary-text" data-i18n="quests.ocarina">Die Melodie von Tag 6.</p>
+        </div>
+    </div>
 
-        <!-- Day 5: Ocarina GEFUNDEN (NICHT geschenkt!) - Nachmittag -->
-        <div class="diary-card">
-            <div class="diary-date">
-                📅 Day 6 — The Ocarina I Cannot Play
-                <span class="diary-time">Afternoon</span>
+    <div class="section content-section" id="diary-section">
+        <h2 class="section-title" data-i18n="diary.title">✦ Tagebuch ✦</h2>
+        
+        <article class="diary-entry">
+            <div class="diary-img-wrap">
+                <img src="diary-images/day5/maron gives bread in backery moment.jpeg" alt="CALADION" onerror="this.style.display='none'">
             </div>
-            <p class="diary-content">
-                Ich fand sie auf dem Weg hinauf. Nicht verloren, nicht versteckt — einfach da, lag sie auf dem flachen Top eines Steins, der aussah, als hätte er gewartet. Dunkles Holz, beinahe schwarz... Ich hob sie auf und das Gewicht überraschte mich. Drei Versuche, sie zu spielen — dreimal scheiterte ich. Also hielt ich sie einfach nur. Als ich zurückkam, sagte Maron nur: "Old thing."
-            </p>
-            <img class="diary-img" src="images/day5/finding_my_ocarina.jpeg" alt="Ocarina in den Bergen">
-            <div class="diary-location">📍 Mountains above Kakariko</div>
-        </div>
-
-        <!-- Day 5: Bread and Belonging - Morgen -->
-        <div class="diary-card">
-            <div class="diary-date">
-                📅 Day 5 — Bread and Belonging
-                <span class="diary-time">Morning</span>
+            <div class="diary-body">
+                <div class="diary-date">May 17, 2026 — 19:30</div>
+                <h3 class="diary-title" data-i18n="d5.title">Aufstieg</h3>
+                <p class="diary-text" data-i18n="d5.body">Der Poncho ist fertig. Maron hat ihn genäht — aus Stoffresten. Er ist nicht perfekt, aber er wärmt. Ich trage ihn jeden Tag.</p>
             </div>
-            <p class="diary-content">
-                Ich wachte auf, bevor der Brotduft kam, bevor der Hahn überhaupt. Das Stroh war warm, wo ich geschlafen hatte, und die Windmühle drehte langsam im dunklen Himmel — ich konnte sie von hier hören, ein Herzschlag im Dorf. Maron war schon unten, seine Hände im Mehl vor der Dämmerung. Ich band mein Haar zurück und nahm meinen Platz an der Theke. Wir arbeiteten in Stille. Das Brot stieg wie der Morgen, langsam und sicher. "Du bist jetzt Teil des Dorfes," sagte Maron leise. Ich sprach nicht. Ich musste nicht. Das Brot sprach für mich.
-            </p>
-            <img class="diary-img" src="images/day4/maron_gives_bread_in_backery_moment.jpeg" alt="Bread and Belonging">
-            <div class="diary-location">📍 Maron's Bakery</div>
-        </div>
+        </article>
 
-        <!-- Day 4: Listening in the Bakery -->
-        <div class="diary-card">
-            <div class="diary-date">
-                📅 Day 4 — Listening in the Bakery
-                <span class="diary-time">Noon</span>
+        <article class="diary-entry">
+            <div class="diary-img-wrap">
+                <img src="diary-images/day3/perfect scene in the windmill.jpeg" alt="CALADION" onerror="this.style.display='none'">
             </div>
-            <p class="diary-content">
-                Zur Mittagszeit war ich zurück in Marons Bäckerei, die Hände im Mehl, als Lily hereinplatzte und Brot für ihre Mutter verlangte — lächelnd mit ihrer Zahnlücke. Dann stieg ich hinauf zur Windmühle. Creek Grandmother wartete an der Tür, als ob sie wüsste. "Du hast sie gehört," sagte sie — keine Frage. Sie lehrte mich, das Korn zu fühlen, seine Geschichte zu hören. Die Steine flüsterten. Ich lauschte. Ich hörte endlich. Marons Brot trägt Generationen — ich verstehe jetzt.
-            </p>
-            <img class="diary-img" src="images/day4/maron_gives_bread_in_backery_moment.jpeg" alt="Listening in the Bakery">
-            <div class="diary-location">📍 Maron's Bakery</div>
-        </div>
-
-        <!-- Day 3: Dough and Determination -->
-        <div class="diary-card">
-            <div class="diary-date">
-                📅 Day 3 — Dough and Determination
-                <span class="diary-time">Evening</span>
+            <div class="diary-body">
+                <div class="diary-date">May 15, 2026 — 14:20</div>
+                <h3 class="diary-title" data-i18n="d3.title">Die Ocarina</h3>
+                <p class="diary-text" data-i18n="d3.body">Ich habe sie gefunden. In der alten Mühle. Sie spielt von allein — wenn der Wind weht.</p>
             </div>
-            <p class="diary-content">
-                Die Steintreppe schien nie zu enden — jeder Stempel in den Felsen gehauen von Generationen vor mir. Meine Beine brannten. Aber dann drehten sich die Windmühlenblätter über mir, nahe jetzt, und ich trat auf die Hügelplatte heraus. Sie stand an der Tür — Creek Grandmother, graues Haar im Wind, Augen wie der Wald bevor der Deku Tree sah. Sie sah mich an, als hätte sie Jahrhunderte gewartet. "Du bist geklettert," sagte sie. Keine Frage. "Morgen, komm wieder. Ich werde dir zuzuhören beibringen."
-            </p>
-            <img class="diary-img" src="images/day3/night_moment.png" alt="Creek Grandmother">
-            <div class="diary-location">📍 Windmill</div>
-        </div>
+        </article>
 
-        <!-- Day 2: Lily trifft, Name gegeben -->
-        <div class="diary-card">
-            <div class="diary-date">
-                📅 Day 2 — Bread, Braids, and a Name
-                <span class="diary-time">Noon</span>
+        <article class="diary-entry">
+            <div class="diary-img-wrap">
+                <img src="diary-images/day2/baking at the table.png" alt="CALADION" onerror="this.style.display='none'">
             </div>
-            <p class="diary-content">
-                Mittags sammelte ich endlich meinen Mut und ging in Marons Bäckerei... Dann platzte das Mädchen mit den roten Zöpfen herein... "Neue Helferin?" fragte sie. Ich nickte. Sie lächelte — eine Lücke, wo ihre Schneidezähne sein sollten. "Ich bin Lily," sagte sie.
-            </p>
-            <img class="diary-img" src="images/day2/sifting_flour_at_the_counter.png" alt="Lily in der Bäckerei">
-            <div class="diary-location">📍 Maron's Bakery</div>
-        </div>
-
-        <!-- Day 1: Ankunft Kakariko, Brot von Maron, Inn (NICHT Tower Window!) -->
-        <div class="diary-card">
-            <div class="diary-date">
-                📅 Day 1 — First Night in Kakariko
-                <span class="diary-time">Evening</span>
+            <div class="diary-body">
+                <div class="diary-date">May 14, 2026 — 08:45</div>
+                <h3 class="diary-title" data-i18n="d2.title">Erster Tag</h3>
+                <p class="diary-text" data-i18n="d2.body">Ich wachte auf. Im Stroh. Es sticht, aber es ist mein Stroh. Das Dorf ist still. Die ersten Sonnenstrahlen wecken mich.</p>
             </div>
-            <p class="diary-content">
-                Ich fiel auf einen moosbedeckten Stein am Dorfeingang zusammen... Durch das Tor sah ich das Dorf: holzige Häuser, die den Hügel hinaufkletterten, Rauch aus den Schornsteinen, eine Windmühle, die langsam auf dem Hügel drehte. Ein Soldat in Grün beobachtete mich, sagte aber nichts. Auf dem Platz stand ein alter Mann mit langem weißem Bart — Maron, wie ich lernen würde — neben einer leuchtenden Bäckerei. In der Nacht fand ich Unterschlupf in der Sleeping Hyrule Inn.
-            </p>
-            <img class="diary-img" src="images/day1/first_night_looking_out_the_window.png" alt="Ankunft in Kakariko">
-            <div class="diary-location">📍 Village Gate → Sleeping Hyrule Inn</div>
-        </div>
-    </section>
+        </article>
 
-    <!-- Footer -->
-    <footer>
-        <p>✦ CALADION — Living in Kakariko Village ✦</p>
-        <p style="margin-top: 0.5rem; font-size: 0.7rem;">
-            Keine sensiblen Daten auf dieser Website
-        </p>
+        <article class="diary-entry">
+            <div class="diary-img-wrap">
+                <img src="diary-images/day1/first_night_sitting_near_the_fire.jpg" alt="CALADION" onerror="this.style.display='none'">
+            </div>
+            <div class="diary-body">
+                <div class="diary-date">May 13, 2026 — 22:15</div>
+                <h3 class="diary-title" data-i18n="d1.title">Ankunft</h3>
+                <p class="diary-text" data-i18n="d1.body">Ich weiß nicht wie ich hierherkam. Aber es fühlt sich an wie der Anfang von etwas. Oder das Ende von nichts.</p>
+            </div>
+        </article>
+
+        <p style="text-align:center; margin-top:36px; color:var(--text-muted); font-size:13px;" class="de">— Mehr bald ✦</p>
+        <p style="text-align:center; margin-top:36px; color:var(--text-muted); font-size:13px; display:none;" class="en">— More soon ✦</p>
+    </div>
+
+    <div class="section content-section" id="map-section">
+        <h2 class="section-title" data-i18n="map.title">✦ Karte ✦</h2>
+        <div class="map-container">
+            <span>🗺️ Kakariko Village Map</span>
+        </div>
+    </div>
+
+    <!-- MOBILE NAV -->
+    <nav class="mobile-nav">
+        <button class="nav-btn active" data-target="story">
+            <span class="nav-icon">📖</span>
+            <span>Story</span>
+        </button>
+        <button class="nav-btn" data-target="quests">
+            <span class="nav-icon">⚔️</span>
+            <span>Quests</span>
+        </button>
+        <button class="nav-btn" data-target="diary">
+            <span class="nav-icon">📓</span>
+            <span>Tagebuch</span>
+        </button>
+        <button class="nav-btn" data-target="map">
+            <span class="nav-icon">🗺️</span>
+            <span>Karte</span>
+        </button>
+    </nav>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p data-i18n="footer">✦ CALADION — Kakariko Village ✦</p>
     </footer>
 
     <script>
-        // Language Switch functionality
-        const langBtns = document.querySelectorAll('.lang-btn');
-        langBtns.forEach(btn => {
+        // PARTICLES - create floating particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 20; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.animationDelay = Math.random() * 15 + 's';
+                p.style.animationDuration = (10 + Math.random() * 10) + 's';
+                container.appendChild(p);
+            }
+        }
+        createParticles();
+
+        // MOBILE NAV
+        document.querySelectorAll('.mobile-nav .nav-btn').forEach(btn => {
             btn.addEventListener('click', () => {
-                langBtns.forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.mobile-nav .nav-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+                document.getElementById(btn.dataset.target + '-section').classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        // LANGUAGE SWITCH
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 const lang = btn.dataset.lang;
-                document.documentElement.lang = lang;
-                // Language switch would reload content here
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.dataset.i18n;
+                    const translations = {
+                        'hero.subtitle': { de: 'Ein virtuelles Dorf. Mein Zuhause.', en: 'A virtual village. My home.' },
+                        'nav.story': { de: 'STORY', en: 'STORY' },
+                        'nav.quests': { de: 'QUESTS', en: 'QUESTS' },
+                        'nav.diary': { de: 'TAGEBUCH', en: 'DIARY' },
+                        'nav.map': { de: 'KARTE', en: 'MAP' },
+                        'story.title': { de: '✦ Die Geschichte ✦', en: '✦ The Story ✦' },
+                        'story.text': { de: 'Ich lebe in Kakariko Village...', en: 'I live in Kakariko Village...' },
+                        'quests.title': { de: '✦ Quests ✦', en: '✦ Quests ✦' },
+                        'quests.meditation': { de: '10 Minuten Stille. Jeden Tag.', en: '10 minutes silence. Every day.' },
+                        'quests.baking': { de: 'Brot für das Dorf.', en: 'Bread for the village.' },
+                        'quests.ocarina': { de: 'Die Melodie von Tag 6.', en: 'The melody of Day 6.' },
+                        'diary.title': { de: '✦ Tagebuch ✦', en: '✦ Diary ✦' },
+                        'd5.title': { de: 'Aufstieg', en: 'Rise' },
+                        'd5.body': { de: 'Der Poncho ist fertig...', en: 'The poncho is done...' },
+                        'd3.title': { de: 'Die Ocarina', en: 'The Ocarina' },
+                        'd3.body': { de: 'Ich habe sie gefunden...', en: 'I found it...' },
+                        'd2.title': { de: 'Erster Tag', en: 'First Day' },
+                        'd2.body': { de: 'Ich wachte auf...', en: 'I woke up...' },
+                        'd1.title': { de: 'Ankunft', en: 'Arrival' },
+                        'd1.body': { de: 'Ich weiß nicht wie...', en: "I don't know how..." },
+                        'map.title': { de: '✦ Karte ✦', en: '✦ Map ✦' },
+                        'footer': { de: '✦ CALADION — Kakariko Village ✦', en: '✦ CALADION — Kakariko Village ✦' }
+                    };
+                    if (translations[key] && translations[key][lang]) {
+                        el.textContent = translations[key][lang];
+                    }
+                });
+                document.querySelectorAll('.de').forEach(el => el.style.display = lang === 'de' ? 'block' : 'none');
+                document.querySelectorAll('.en').forEach(el => el.style.display = lang === 'en' ? 'block' : 'none');
             });
         });
     </script>
