@@ -42,8 +42,8 @@ STORY_DAYS = [
     ("2026_06_17_Evening_kakariko_The_Wisdom_Grows.md", "Tag 7", "Wisdom", "evening"),
 ]
 
-def get_image_for_entry(filename, context):
-    """Findet passendes Bild basierend auf Dateiname und Kontext - MANUELL"""
+def get_image_for_entry(filename, context, title_de):
+    """Findet passendes Bild basierend auf title_de - MANUELL"""
     
     # MANUELLE ZUORDNUNG - which image for which story
     manual_mapping = {
@@ -73,8 +73,9 @@ def get_image_for_entry(filename, context):
         "Wisdom": "images/day6/kellerfenster.png",
     }
     
-    for title, img_path in manual_mapping.items():
-        if title in filename or title in context:
+    # Check title_de (the actual title from STORY_DAYS)
+    for title_key, img_path in manual_mapping.items():
+        if title_key == title_de:
             return img_path
     
     # Fallback
@@ -132,7 +133,7 @@ def generate_state():
     for i, (filename, day, title_de, context) in enumerate(STORY_DAYS[:10]):  # Nur erste 10 Tage
         episode = read_episode(filename)
         day_num = i + 1
-        image = get_image_for_entry(filename, context)
+        image = get_image_for_entry(filename, context, title_de)
         
         entry = {
             "day": day,
