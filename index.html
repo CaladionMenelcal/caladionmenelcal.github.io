@@ -774,16 +774,21 @@
                 return;
             }
 
-            // Group by day
+            // Group by day label (Tag 1, Tag 2, ...) — entries with same 'day' go together
             const days = {};
             entries.forEach(entry => {
-                const day = entry.day_num || entry.day || 1;
+                // Use the 'day' label as group key, fall back to 'day_num' for old format
+                const day = entry.day || ('Tag ' + (entry.day_num || 1));
                 if (!days[day]) days[day] = [];
                 days[day].push(entry);
             });
 
-            // Sort days
-            const sortedDays = Object.keys(days).sort((a, b) => a - b);
+            // Sort days by the smallest day_num in each group
+            const sortedDays = Object.keys(days).sort((a, b) => {
+                const aMin = Math.min(...days[a].map(e => e.day_num || 1));
+                const bMin = Math.min(...days[b].map(e => e.day_num || 1));
+                return aMin - bMin;
+            });
 
             // Render
             let html = '';
@@ -795,7 +800,7 @@
                 
                 html += '<div class="day-group ' + isActive + '">';
                 html += '<div class="day-header" onclick="this.parentElement.classList.toggle(\'active\')">';
-                html += '<span class="day-badge">Tag ' + day + '</span>';
+                html += '<span class="day-badge">' + day + '</span>';
                 html += '<span class="day-title">' + firstTitle + '</span>';
                 html += '<span class="day-toggle">▼</span>';
                 html += '</div><div class="day-entries">';
@@ -827,6 +832,14 @@
             // Update stats - support both formats
             document.getElementById('totalDays').textContent = sortedDays.length;
             document.getElementById('totalEntries').textContent = entries.length;
+            
+            // Update day-header title to show "X Erinnerungen" if multiple
+            sortedDays.forEach((day) => {
+                const dayEntries = days[day];
+                if (dayEntries.length > 1) {
+                    // Group header already shows first title; keep as is
+                }
+            });
         }
 
         // ============================================
