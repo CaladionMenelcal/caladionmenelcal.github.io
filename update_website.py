@@ -35,20 +35,50 @@ STORY_DAYS = [
     ("2026_06_17_Evening_kakariko_The_Wisdom_Grows.md", "Tag 7", "Wisdom", "evening"),
 ]
 
-def get_image_for_day(day_num):
-    """Findet passendes Bild zum Tag"""
-    day_folder = IMAGES_DIR / f"day{day_num}"
-    if not day_folder.exists():
-        day_folder = IMAGES_DIR / "misc"
+def get_image_for_entry(filename, context):
+    """Findet passendes Bild basierend auf Dateiname und Kontext"""
+    import re
     
-    images = list(day_folder.glob("*.*"))
-    if images:
-        # Nimm das erste Bild das nicht test/crop drin hat
-        for img in images:
-            if "test" not in img.name.lower() and "crop" not in img.name.lower():
-                return f"images/{day_folder.name}/{img.name}"
-        return f"images/{day_folder.name}/{images[0].name}"
-    return None
+    # Kontext-Mapping: which images match which story
+    context_keywords = {
+        "road": ["path", "walking", "way", "road"],
+        "night": ["night", "window", "fire", "evening"],
+        "bakery": ["bakery", "bread", "baking", "flour", "dough", "maron"],
+        "windmill": ["windmill", "mill"],
+        "creek": ["creek", "laundry", "washing", " creek"],
+        "mountain": ["mountain", "ocarina", "herb"],
+    }
+    
+    # Scan all image folders for best match
+    best_match = None
+    best_score = 0
+    
+    for day_folder in IMAGES_DIR.glob("day*"):
+        if not day_folder.is_dir():
+            continue
+        for img in day_folder.glob("*.*"):
+            if img.suffix.lower() in [".png", ".jpg", ".jpeg", ".webp"]:
+                img_name = img.stem.lower()
+                score = 0
+                for kw_list in context_keywords.values():
+                    for kw in kw_list:
+                        if kw in img_name or kw in context.lower():
+                            score += 1
+                if score > best_score:
+                    best_score = score
+                    best_match = f"images/{day_folder.name}/{img.name}"
+    
+    # Fallback: first available image
+    if not best_match:
+        for day_folder in sorted(IMAGES_DIR.glob("day*")):
+            if not day_folder.is_dir():
+                continue
+            images = list(day_folder.glob("*.*"))
+            if images:
+                best_match = f"images/{day_folder.name}/{images[0].name}"
+                break
+    
+    return best_match
 
 def read_episode(filename):
     """Liest eine Obsidian-Episode und extrahiert Text"""
@@ -102,13 +132,13 @@ def generate_state():
     for i, (filename, day, title_de, context) in enumerate(STORY_DAYS[:10]):  # Nur erste 10 Tage
         episode = read_episode(filename)
         day_num = i + 1
-        image = get_image_for_day(day_num)
+        image = get_image_for_entry(filename, context)
         
         entry = {
             "day": day,
             "day_num": day_num,
             "title_de": title_de,
-            "title_en": title_de,  # TODO: echte Übersetzung
+            "title_en": title_de,
             "body_de": episode["text"],
             "body_en": episode["text"],
             "image": image,
